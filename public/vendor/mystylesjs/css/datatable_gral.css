@@ -1,0 +1,27 @@
+/*
+6. DataTables Styles
+********************************************************************/
+/* Estilos para la Tabla */
+table{
+    width: 100%;
+}
+table th {
+    background-color: #2B416D !important;
+    color: white !important;
+    text-transform: uppercase;
+}
+table>tbody>tr>td {
+    vertical-align: middle !important;
+    text-transform: uppercase;
+}
+/* Alinear botones y cuadro de busqueda */
+.btn-group, .btn-group-vertical {
+    position: absolute !important;
+    display: inline;
+}
+.th_hidden{
+	display: none !important;
+}
+.td_hidden{
+	display: none !important;
+}
