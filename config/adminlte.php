@@ -130,7 +130,7 @@ return [
     */
 
     'usermenu_enabled' => true,
-    'usermenu_header' => false,
+    'usermenu_header' => true,
     'usermenu_header_class' => 'bg-primary',
     'usermenu_image' => false,
     'usermenu_desc' => false,
@@ -292,13 +292,25 @@ return [
     'menu' => [
         // Navbar items:
         [
+            'text' => ' CARRITO',
+            'icon' => 'fas fa-shopping-cart',
+            'route'  => 'roles.index',
+            'can'  => 'VER ROL',
+            'icon_color' => 'primary',
+            'topnav_right' => true,
+            'label'        => 0,                      // The initial label for the badge (optional).
+            'label_color'  => 'danger',
+        ],
+        [
             'type' => 'navbar-search',
             'text' => 'search',
             'topnav_right' => false,
         ],
+       
         [
             'type' => 'fullscreen-widget',
-            'topnav_right' => false,
+            'text' =>'kakmdfk',
+            'topnav_right' => true,
         ],
 
         [
