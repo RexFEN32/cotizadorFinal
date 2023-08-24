@@ -31,18 +31,18 @@
                             </tr>
                             <tr class="text-right">
                                 <td>Cantidad: {{$Grills->amount}}</td>
-                                <td>Frente: {{$Grills->front}}</td>
+                                <td>Frente (M): {{$Grills->front}}</td>
                             </tr>
                             <tr class="text-right">
                                 <td>Acabado: {{$Grills->color}}</td>
-                                <td>Fondo: {{$Grills->background}}</td>
+                                <td>Fondo(M): {{$Grills->background}}</td>
                             </tr>
                             <tr class="text-right">
                                 {{-- <td>Costo: ${{number_format($Grills->cost, 2)}}</td> --}}
-                                <td colspan="2">Dimensiones cuadro in: {{$Grills->dimensions}}</td>
+                                <td colspan="2">Dimensiones cuadro "in": {{$Grills->dimensions}}</td>
                             </tr>
                             <tr class="text-right">
-                                <td>Capacidad de Carga: {{$Grills->loading_capacity}}</td>
+                                <td>Capacidad de Carga (Kg): {{$Grills->loading_capacity}}</td>
                                 <td>Tipo de Viga: {{$Grills->joist_type}}</td>
                             </tr>
                             <tr class="font-bold text-right text-1xl">

@@ -6,20 +6,30 @@
     <x-header-cot>Sistema de Cotización Tyrsa</x-header-cot>
 @stop
 
+
+
+
 @section('content')
     <div class="container bg-white p-3 rounded-xl shadow-xl">
         <div class="row m-3">
             <div class="row mb-3">
                 <nav class="navbar bg-light rounded-full">
                     <div class="container-fluid items-center">
-                        <span class="navbar-brand mb-0 h3 font-bold">Selectivo</span>
+                
+          
+    
+                <span class="navbar-brand mb-0 h3 font-bold">Selectivo</span>
                     </div>
                 </nav>
             </div>
+ 
+
+            
             <div class="row">
                 <div class="col-sm-4 col-xs-12">
                     <div class="card">
                         <div class="card-body">
+                            
                             <h5 class="card-title">Marcos</h5>
                             <p class="card-text">Cotizador de Marcos.</p>
                             <a href="{{ route('menuframes.show', $Quotation_Id) }}" class="btn btn-primary">
@@ -278,6 +288,7 @@
                 <div class="col-sm-4 col-xs-12">
                     <div class="card">
                         <div class="card-body">
+                            
                             <h5 class="card-title">Cuestionario</h5>
                             <p class="card-text">Imprimir Cuestionario de Ingenieria de Racks.</p>
                             <a href="{{ route('rpt_rack_engineering', $Quotation_Id) }}" class="btn btn-primary">
@@ -302,6 +313,100 @@
                 </button>
                 {!! Form::close() !!}
             </div>
+       
+       
         </div>
+
     </div>
+
+   
+
+                                 
+<body>
+
+<!-- Articulos que se venden en una tienda -->
+
+
+
+<div class="container w-full bg-white p-3 rounded-xl shadow-xl">
+        <div class="row m-3">
+            <div  class="row bg-white p-4 shadow-lg rounded-lg">
+                <div class="col-sm-4 col-xs-12">
+                <span class="navbar-brand mb-0 h3 font-bold">Seleccione los items a cotizar </span>
+              
+                        <div class="form-group p-2">
+                <select name="" id="listaTienda" class="js_select2 inputjet w-full text-xs uppercase">
+
+	
+		<option value="Item 1">Marcos</option>
+		<option value="Item 2">Vigas</option>
+		<option value="Item 3">Crossbar</option>
+		<option value="Item 4">Distanciadores</option>
+		<option value="Item 5">Pisos</option>
+		<option value="Item 6">Refuerzos de pisos</option>
+		<option value="Item 7">Panel</option>
+		<option value="Item 8">Parrillas</option>
+		<option value="Item 9">Maderas</option>
+		<option value="Item 10">Protectores</option>
+		<option value="Item 11">Especial</option>
+		<option value="Item 12">Administrativo</option>
+		<option value="Item 13">Fletes</option>
+		<option value="Item 14">Instalacion</option>
+		<option value="Item 15">Viaticos</option>
+	</select>
+
+</div>
+
+<div>
+<div class="form-group p-2">
+<!-- Boton para agregar items de la tienda al carrito -->
+<span class="navbar-brand mb-0 h3 font-bold">Seleccione "AGREGAR" para agregar al carrito </span>
+
+<div class="form-group p-2 text-sm font-semibold table-responsive">
+<div>
+    <button type="submit" class="btn btn-blue mb-2" onclick="agregarAlCarrito()">
+                                <i class="fa-solid fa-calculator fa-xl"></i>&nbsp; Agregar 
+    </button>
+    <button type="button" class="btn btn-red" onclick="vaciarCarrito()">
+            <i class="fa-solid fa-trash fa-lg"></i>&nbsp; Vaciar carrito
+    </button>
+</div>
+</div>
+
+<div>    
+<span class="navbar-brand mb-0 h3 font-bold">Carrito de compras  </span>
+</div>
+<div>
+<!-- Creamos una lista vacia que será nuestro carrito de compras-->
+
+
+
+
+                    <div class="form-group p-2 text-sm font-semibold table-responsive">
+                        <table class="table">
+                            <tr class="text-center">
+                                <th  >ITEMS</th>
+                            </tr>
+                            <tr>
+                                <td class="text-left font-bold"><ul name="" id="listaCarrito"></ul></td>
+                               
+                            </tr>
+                            
+</div>
+<script>
+    function agregarAlCarrito() {
+        var listaTienda = document.getElementById("listaTienda");
+        var listaCarrito = document.getElementById("listaCarrito");
+        var itemCarrito = document.createElement("li"); // Cambiamos de 'option' a 'li'
+        itemCarrito.textContent = listaTienda.options[listaTienda.selectedIndex].text;
+        listaCarrito.appendChild(itemCarrito); // Agregar el elemento a la lista del carrito
+    }
+    function vaciarCarrito() {
+        var listaCarrito = document.getElementById("listaCarrito");
+        while (listaCarrito.firstChild) {
+            listaCarrito.removeChild(listaCarrito.firstChild);
+        }
+    }
+</script>
+</body>
 @stop

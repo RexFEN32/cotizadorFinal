@@ -25,11 +25,11 @@
                         <input type="number" name="amount" class="inputjet w-full text-xs uppercase" value="{{ old('amount') }}" />
                         <x-jet-input-error for='amount' /><br>
 
-                        <x-jet-label value="* Frente" />
+                        <x-jet-label value="* Frente (M)" />
                         <input type="text" name="front" class="inputjet w-full text-xs uppercase" value="{{ old('front') }}" />
                         <x-jet-input-error for='front' /><br>
 
-                        <x-jet-label value="* Fondo" />
+                        <x-jet-label value="* Fondo (M) " />
                         <select name="background" class="inputjet w-full text-xs uppercase">
                             <option value="0.91"@if (old('background')=="0.91") selected @endif>0.91</option>
                             <option value="1.06"@if (old('background')=="1.06") selected @endif>1.06</option>
@@ -48,11 +48,11 @@
                         <input type="number" step="0.001" name="cost" class="inputjet w-full text-xs uppercase" value="{{ old('cost') }}" />
                         <x-jet-input-error for='cost' /><br>
 
-                        <x-jet-label value="* Dimensiones del cuadro en in" />
+                        <x-jet-label value="* Dimensiones del cuadro en in " />
                         <input type="text" name="dimensions" class="inputjet w-full text-xs uppercase" value="{{ old('dimensions') }}" />
                         <x-jet-input-error for='dimensions' /><br>
 
-                        <x-jet-label value="* Capacidad de Carga" />
+                        <x-jet-label value="* Capacidad de Carga (Kg)" />
                         <input type="text" name="loading_capacity" class="inputjet w-full text-xs uppercase" value="{{ old('loading_capacity') }}" />
                         <x-jet-input-error for='loading_capacity' /><br>
 
