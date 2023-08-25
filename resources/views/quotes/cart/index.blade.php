@@ -20,8 +20,14 @@
                     </div>
                 </div>
                 <div class="col">
-                    <table>
-
+                    <table class="table table_quotation_protectors table-striped align-middle">>
+                     <thead >
+                        <tr>
+                            <th>Producto</th>
+                            <th>SKU</th>
+                            <th>Precio</th>
+                        </tr>
+                     </thead>
                     </table>
                 </div>
             </div>
