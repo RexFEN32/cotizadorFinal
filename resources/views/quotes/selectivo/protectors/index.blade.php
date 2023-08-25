@@ -51,9 +51,11 @@
                                             </div>
                                             <div class="col-6 text-center w-10">
                                                 @can('BORRAR PROTECTORES')
-                                                {{-- {!! Form::open(['method'=>'DELETE','route'=>['selectivo_protectors.destroy', $row->id], 'class'=>'DeleteReg' ]) !!}
-                                                    {!! Form::button('<i class="fa fa-trash items-center"></i>', ['class' => 'btn btn-red h-9 w-9', 'type' => 'submit']) !!}
-                                                {!! Form::close() !!} --}}
+                                                <a href="{{ route('selectivo_protectors.destroy', $row->id)}}" class="btn btn-red w-9 h-9">
+                                                <i class="fa fa-trash items-center"></i></span>
+                                                    </a>
+                                                 
+                                               
                                                 @endcan
                                             </div>
                                         </div>
@@ -71,6 +73,9 @@
                                 </tr>
                             </tfoot>
                         </table>
+                        <div>
+                        <button type="button" class="btn btn-outline-primary">Agregar al Carrito</button>
+                        </div>
                     </div>
                 </div>
                 <div class="card-footer">

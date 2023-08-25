@@ -382,7 +382,11 @@ class QuotationProtectorController extends Controller
 
     public function selectivo_protectors_destroy($id)
     {
-
+        
+    $Protector=QuotationProtector::find($id);
+    $Quotation_Id=$Protector->quotation_id;
+    QuotationProtector::destroy($id);
+    return redirect()->route('selectivo_protectors.index', $Quotation_Id)->with('eliminar', 'ok');
     }
 
     /* Double Deep */

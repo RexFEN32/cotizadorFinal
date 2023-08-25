@@ -293,13 +293,19 @@ return [
         // Navbar items:
         [
             'text' => ' CARRITO',
+            'type' => 'navbar-notification',
+            'id'           => 'my-notification',
             'icon' => 'fas fa-shopping-cart',
-            'route'  => 'roles.index',
+            'route'  => 'shopping_cart.index',
             'can'  => 'VER ROL',
             'icon_color' => 'primary',
             'topnav_right' => true,
             'label'        => 0,                      // The initial label for the badge (optional).
-            'label_color'  => 'danger',
+            'label_color'  => 'primary',
+            'update_cfg'   => [
+                'url' => 'shopping_cart/get',
+                'period' => 3,
+            ],
         ],
         [
             'type' => 'navbar-search',
