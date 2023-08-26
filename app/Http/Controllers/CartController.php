@@ -24,7 +24,7 @@ class CartController extends Controller
         'label'       => count($Protectors),
         'label_color' => 'danger',
         'icon' => 'fas fa-shopping-cart',
-        'icon_color'  => 'dark',
+        
     ];
    }
 }
