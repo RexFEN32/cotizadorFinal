@@ -23,6 +23,7 @@ class CartController extends Controller
     return [
         'label'       => count($Protectors),
         'label_color' => 'danger',
+        'icon' => 'fas fa-shopping-cart',
         'icon_color'  => 'dark',
     ];
    }
