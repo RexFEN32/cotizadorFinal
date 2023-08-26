@@ -9,18 +9,13 @@
 @section('content')
     <div class="container w-full bg-white p-3 rounded-xl shadow-xl">
         <div class="row m-3">
+            
         <h1>Contenido del Carrito</h1>
-            <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 g-2">
-                <div class="col">
-                    <div class="card shadow-sm">
-                        
-                        <div class="card-body">
-                           
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <table class="table table_quotation_protectors table-striped align-middle">>
+
+
+
+        <br>
+                    <table class="table table_quotation_protectors table-striped align-middle">
                      <thead >
                         <tr>
                             <th>Producto</th>
@@ -28,8 +23,25 @@
                             <th>Precio</th>
                         </tr>
                      </thead>
+                     <tbody>
+                        @foreach($Protectors as $p)
+                        <tr>
+                            <td>{{$p->protector}} </td>
+                            <td></td>
+                            <td>{{$p->total_price}} </td>
+                        </tr>
+                        @endforeach
+                     </tbody>
+                     <tfoot>
+                        <tr>
+                            <td></td> 
+                            <td>Total</td>
+                            <td> {{$Protectors->sum('total_price')}}</td>
+                    </tr>
+                     </tfoot>
                     </table>
-                </div>
+            <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 g-2">
+                
             </div>
         </div>
     </div>
