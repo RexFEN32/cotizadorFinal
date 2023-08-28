@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Floor;
 use App\Models\PriceFrame;
 use App\Models\PriceList;
+use App\Models\PriceListBar;
+use App\Models\PriceListProtector;
 use App\Models\PriceMiniatureFrame;
 use App\Models\PriceStructuralFrameworks;
 use App\Models\Steel;
@@ -432,6 +434,34 @@ class SteelController extends Controller
             }
         }
 
+        $Bars = PriceListBar::where('caliber', $Steels->caliber)->get();
+        if($Bars->count() > 0){
+            foreach($Bars as $row){
+                $PriceList = PriceList::where('system', 'ACCESORIOS')->where('piece', 'PROTECTOR')->where('caliber', $row->caliber)->first();
+                if($PriceList){
+                    $Price = $PriceList->cost * 2.5;
+                    $TotalPrice = $row->weight * $Price;
+                    $row->cost = $PriceList->cost*$row->weight;
+                    $row->sale_price = $TotalPrice;
+                    $row->save();
+                }
+            }
+        }
+
+        $ProtectorComponents = PriceListProtector::where('caliber', $Steels->caliber)->get();
+        if($ProtectorComponents->count() > 0){
+            foreach($ProtectorComponents as $row){
+                $PriceList = PriceList::where('system', 'ACCESORIOS')->where('piece', 'PROTECTOR')->where('caliber', $row->caliber)->first();
+                
+                if($PriceList){
+                    $Price = $PriceList->cost * $row->f_total;
+                    $TotalPrice = $row->weight * $Price;
+                    $row->cost = $PriceList->cost*$row->weight;
+                    $row->sale_price = $TotalPrice;
+                    $row->save();
+                }
+            }
+        }
         return redirect()->route('steels.index')->with('update_reg', 'ok');
     }
 
