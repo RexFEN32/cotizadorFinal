@@ -264,7 +264,7 @@ class SteelController extends Controller
                 $row->save();
             }
         }
-
+        
         $PriceFrames = PriceFrame::where('caliber', $Steels->caliber)->get();
         if($PriceFrames->count() > 0){
             foreach($PriceFrames as $row){
@@ -304,6 +304,34 @@ class SteelController extends Controller
             }
         }
 
+        $Bars = PriceListBar::where('caliber', $Steels->caliber)->get();
+        if($Bars->count() > 0){
+            foreach($Bars as $row){
+                $PriceList = PriceList::where('system', 'ACCESORIOS')->where('piece', 'PROTECTOR')->where('caliber', $row->caliber)->first();
+                if($PriceList){
+                    $Price = $PriceList->cost * 2.5;
+                    $TotalPrice = $row->weight * $Price;
+                    $row->cost = $PriceList->cost*$row->weight;
+                    $row->sale_price = $TotalPrice;
+                    $row->save();
+                }
+            }
+        }
+
+        $ProtectorComponents = PriceListProtector::where('caliber', $Steels->caliber)->get();
+        if($ProtectorComponents->count() > 0){
+            foreach($ProtectorComponents as $row){
+                $PriceList = PriceList::where('system', 'ACCESORIOS')->where('piece', 'PROTECTOR')->where('caliber', $row->caliber)->first();
+                
+                if($PriceList){
+                    $Price = $PriceList->cost * $row->f_total;
+                    $TotalPrice = $row->weight * $Price;
+                    $row->cost = $PriceList->cost*$row->weight;
+                    $row->sale_price = $TotalPrice;
+                    $row->save();
+                }
+            }
+        }
         $TypeBox2Joists = TypeBox2Joist::where('caliber', $Steels->caliber)->get();
         if($TypeBox2Joists->count() > 0){
             foreach($TypeBox2Joists as $row){
@@ -316,7 +344,7 @@ class SteelController extends Controller
                 }
             }
         }
-
+        
         $TypeBox25Joists = TypeBox25Joist::where('caliber', $Steels->caliber)->get();
         if($TypeBox25Joists->count() > 0){
             foreach($TypeBox25Joists as $row){
@@ -329,7 +357,7 @@ class SteelController extends Controller
                 }
             }
         }
-
+     
         $TypeC2Joists = TypeC2Joist::where('caliber', $Steels->caliber)->get();
         if($TypeC2Joists->count() > 0){
             foreach($TypeC2Joists as $row){
@@ -342,7 +370,7 @@ class SteelController extends Controller
                 }
             }
         }
-
+        
         $TypeChairJoists = TypeChairJoist::where('caliber', $Steels->caliber)->get();
         if($TypeChairJoists->count() > 0){
             foreach($TypeChairJoists as $row){
@@ -407,7 +435,7 @@ class SteelController extends Controller
                 }
             }
         }
-
+       
         $TypeStructuralJoists = TypeStructuralJoist::where('caliber', $Steels->caliber)->get();
         if($TypeStructuralJoists->count() > 0){
             foreach($TypeStructuralJoists as $row){
@@ -420,7 +448,6 @@ class SteelController extends Controller
                 }
             }
         }
-
         $Floors = Floor::where('caliber', $Steels->caliber)->get();
         if($Floors->count() > 0){
             foreach($Floors as $row){
@@ -433,35 +460,8 @@ class SteelController extends Controller
                 }
             }
         }
-
-        $Bars = PriceListBar::where('caliber', $Steels->caliber)->get();
-        if($Bars->count() > 0){
-            foreach($Bars as $row){
-                $PriceList = PriceList::where('system', 'ACCESORIOS')->where('piece', 'PROTECTOR')->where('caliber', $row->caliber)->first();
-                if($PriceList){
-                    $Price = $PriceList->cost * 2.5;
-                    $TotalPrice = $row->weight * $Price;
-                    $row->cost = $PriceList->cost*$row->weight;
-                    $row->sale_price = $TotalPrice;
-                    $row->save();
-                }
-            }
-        }
-
-        $ProtectorComponents = PriceListProtector::where('caliber', $Steels->caliber)->get();
-        if($ProtectorComponents->count() > 0){
-            foreach($ProtectorComponents as $row){
-                $PriceList = PriceList::where('system', 'ACCESORIOS')->where('piece', 'PROTECTOR')->where('caliber', $row->caliber)->first();
-                
-                if($PriceList){
-                    $Price = $PriceList->cost * $row->f_total;
-                    $TotalPrice = $row->weight * $Price;
-                    $row->cost = $PriceList->cost*$row->weight;
-                    $row->sale_price = $TotalPrice;
-                    $row->save();
-                }
-            }
-        }
+        
+       
         return redirect()->route('steels.index')->with('update_reg', 'ok');
     }
 
