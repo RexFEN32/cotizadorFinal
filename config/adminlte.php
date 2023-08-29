@@ -405,18 +405,18 @@ return [
                     'route'  => 'price_list_auxiliars.index',
                     'can'  => 'VER LISTA DE PRECIOS',
                 ],
-                [
-                    'text' => 'LISTA DE PRECIOS PROTECTORES',
-                    'icon' => 'fas fa-fw fa-circle-dollar-to-slot',
-                    'route'  => 'price_list_protectors.index',
-                    'can'  => 'VER LISTA DE PRECIOS',
-                ],
-                [
-                    'text' => 'LISTA DE PRECIOS BARRAS',
-                    'icon' => 'fas fa-fw fa-circle-dollar-to-slot',
-                    'route'  => 'price_list_bars.index',
-                    'can'  => 'VER LISTA DE PRECIOS',
-                ],
+                // [
+                //     'text' => 'LISTA DE PRECIOS PROTECTORES',
+                //     'icon' => 'fas fa-fw fa-circle-dollar-to-slot',
+                //     'route'  => 'price_list_protectors.index',
+                //     'can'  => 'VER LISTA DE PRECIOS',
+                // ],
+                // [
+                //     'text' => 'LISTA DE PRECIOS BARRAS',
+                //     'icon' => 'fas fa-fw fa-circle-dollar-to-slot',
+                //     'route'  => 'price_list_bars.index',
+                //     'can'  => 'VER LISTA DE PRECIOS',
+                // ],
                 // [
                 //     'text' => 'PRODUCTOS',
                 //     'icon' => 'fas fa-fw fa-barcode',
