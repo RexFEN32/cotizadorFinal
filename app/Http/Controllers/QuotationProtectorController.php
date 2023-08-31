@@ -6,6 +6,8 @@ use App\Models\PriceListBar;
 use App\Models\PriceListProtector;
 use App\Models\Protector;
 use App\Models\QuotationProtector;
+
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class QuotationProtectorController extends Controller
@@ -51,7 +53,7 @@ class QuotationProtectorController extends Controller
         $PostProtectorsCost = PriceListProtector::sum('cost');
         $PostProtectorsSalePrice = PriceListProtector::sum('sale_price');
         $PostProtectorsWeight = PriceListProtector::sum('weight');
-        
+        $user_id=Auth::user()->id;
         if($Protector == 'PROTECTOR DE POSTE')
         {
             $QuotationProtectors = QuotationProtector::where('quotation_id', $Quotation_Id)->where('protector', $Protector)->first();
@@ -75,6 +77,8 @@ class QuotationProtectorController extends Controller
                 $QuotationProtectors->unit_price = $PostProtectorsSalePrice;
                 $QuotationProtectors->total_price = $Amount * $PostProtectorsSalePrice;
                 $QuotationProtectors->save();
+                
+                (new CartController)->add($user_id,'PROTECTOR DE POSTE',$PostProtectorsSalePrice,$Amount,$Quotation_Id);
                 return redirect()->route('selectivo_protectors.index', $Quotation_Id)->with('create_reg', 'ok');
             }
         }elseif($Protector == 'PROTECTOR DE BATERIA SENCILLA')
