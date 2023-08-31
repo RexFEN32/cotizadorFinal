@@ -10,11 +10,11 @@
     <div class="container-flex m-1 bg-gray-300 shadow-lg rounded-lg">
         <div class="row p-3 m-2 rounded-lg shadow-xl bg-white">
             <div class="col-sm-12 text-right">
-                @can('CREAR SECTOR')
+                {{-- @can('CREAR SECTOR')--}}
                 <a href="{{ route('sectors.create')}}" class="btn btn-green">
                     <i class="fas fa-plus-circle"></i>&nbsp; Nueva
                 </a>
-                @endcan
+                {{--@endcan --}}
             </div>
             <div class="w-100">&nbsp;</div>
             <div class="col-sm-12 table-responsive">
@@ -32,18 +32,18 @@
                             <td class="w-20">
                                 <div class="row">
                                     <div class="col-6 text-center w-10">
-                                        @can('EDITAR SECTOR')
+                                        {{-- @can('EDITAR SECTOR')--}}
                                             <a href="{{ route('sectors.edit', $row->id)}}" class="btn btn-blue w-9 h-9">
                                                 <i class="fas fa-edit"></i></span>
                                             </a>
-                                        @endcan
+                                        {{--@endcan --}}
                                     </div>
                                     <div class="col-6 text-center w-10">
-                                        @can('BORRAR SECTOR')
+                                        {{-- @can('BORRAR SECTOR')--}}
                                         {!! Form::open(['method'=>'DELETE','route'=>['sectors.destroy', $row->id], 'class'=>'DeleteReg' ]) !!}
                                             {!! Form::button('<i class="fa fa-trash items-center"></i>', ['class' => 'btn btn-red h-9 w-9', 'type' => 'submit']) !!}
                                         {!! Form::close() !!}
-                                        @endcan
+                                        {{--@endcan --}}
                                     </div>
                                 </div>
                             </td>

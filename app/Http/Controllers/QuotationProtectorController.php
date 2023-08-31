@@ -78,7 +78,7 @@ class QuotationProtectorController extends Controller
                 $QuotationProtectors->total_price = $Amount * $PostProtectorsSalePrice;
                 $QuotationProtectors->save();
                 
-                (new CartController)->add($user_id,'PROTECTOR DE POSTE',$PostProtectorsSalePrice,$Amount,$Quotation_Id);
+                //(new CartController)->add($user_id,'PROTECTOR DE POSTE',$PostProtectorsSalePrice,$Amount,$Quotation_Id);
                 return redirect()->route('selectivo_protectors.index', $Quotation_Id)->with('create_reg', 'ok');
             }
         }elseif($Protector == 'PROTECTOR DE BATERIA SENCILLA')

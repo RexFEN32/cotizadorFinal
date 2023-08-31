@@ -15,11 +15,11 @@
                 </div>
                 <div class="card-body">
                     <div class="col-sm-12 text-right">
-                        @can('AGREGAR PROTECTORES')
+                        {{--@can('AGREGAR PROTECTORES')--}}
                         <a href="{{ route('double_deep_protectors.create', $Quotation_Id)}}" class="btn btn-green">
                             <i class="fas fa-plus-circle"></i>&nbsp; Agregar Protector
                         </a>
-                        @endcan
+                       {{-- @endcan--}}
                     </div>
                     <div class="w-100">&nbsp;</div>
                     <div class="col-sm-12 table-responsive text-xs">
@@ -43,18 +43,18 @@
                                     <td>
                                         <div class="row">
                                             <div class="col-6 text-center w-10">
-                                                @can('EDITAR PROTECTORES')
+                                                {{--@can('EDITAR PROTECTORES')--}}
                                                     <a href="{{ route('double_deep_protectors.edit', $row->id)}}" class="btn btn-blue w-9 h-9">
                                                         <i class="fas fa-edit"></i></span>
                                                     </a>
-                                                @endcan
+                                                {{-- @endcan --}}
                                             </div>
                                             <div class="col-6 text-center w-10">
-                                                @can('BORRAR PROTECTORES')
+                                               {{-- @can('BORRAR PROTECTORES')--}}
                                                 {{-- {!! Form::open(['method'=>'DELETE','route'=>['double_deep_protectors.destroy', $row->id], 'class'=>'DeleteReg' ]) !!}
                                                     {!! Form::button('<i class="fa fa-trash items-center"></i>', ['class' => 'btn btn-red h-9 w-9', 'type' => 'submit']) !!}
                                                 {!! Form::close() !!} --}}
-                                                @endcan
+                                                {{-- @endcan --}}
                                             </div>
                                         </div>
                                     </td>

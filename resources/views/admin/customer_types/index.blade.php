@@ -10,11 +10,11 @@
     <div class="container-flex m-1 bg-gray-300 shadow-lg rounded-lg">
         <div class="row p-3 m-2 rounded-lg shadow-xl bg-white">
             <div class="col-sm-12 text-right">
-                @can('CREAR TIPOS CLIENTE')
+                {{--@can('CREAR TIPOS CLIENTE')--}}
                 <a href="{{ route('customer_types.create')}}" class="btn btn-green">
                     <i class="fas fa-plus-circle"></i>&nbsp; Nueva
                 </a>
-                @endcan
+                {{--@endcan--}}
             </div>
             <div class="w-100">&nbsp;</div>
             <div class="col-sm-12 table-responsive">
@@ -32,18 +32,18 @@
                             <td class="w-20">
                                 <div class="row">
                                     <div class="col-6 text-center w-10">
-                                        @can('EDITAR TIPOS CLIENTE')
+                                        {{--@can('EDITAR TIPOS CLIENTE')--}}
                                             <a href="{{ route('customer_types.edit', $row->id)}}" class="btn btn-blue w-9 h-9">
                                                 <i class="fas fa-edit"></i></span>
                                             </a>
-                                        @endcan
+                                        {{--@endcan--}}
                                     </div>
                                     <div class="col-6 text-center w-10">
-                                        @can('BORRAR TIPOS CLIENTE')
+                                        {{--@can('BORRAR TIPOS CLIENTE')--}}
                                         {!! Form::open(['method'=>'DELETE','route'=>['customer_types.destroy', $row->id], 'class'=>'DeleteReg' ]) !!}
                                             {!! Form::button('<i class="fa fa-trash items-center"></i>', ['class' => 'btn btn-red h-9 w-9', 'type' => 'submit']) !!}
                                         {!! Form::close() !!}
-                                        @endcan
+                                        {{--@endcan--}}
                                     </div>
                                 </div>
                             </td>
