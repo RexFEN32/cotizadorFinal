@@ -24,9 +24,9 @@
                         </tr>
                      </thead>
                      <tbody>
-                        @foreach($Protectors as $p)
+                        @foreach($Cart_products as $p)
                         <tr>
-                            <td>{{$p->protector}} </td>
+                            <td>{{$p->name}} </td>
                             <td></td>
                             <td>{{$p->total_price}} </td>
                         </tr>
@@ -36,7 +36,7 @@
                         <tr>
                             <td></td> 
                             <td>Total</td>
-                            <td> {{$Protectors->sum('total_price')}}</td>
+                            <td> {{$Cart_products->sum('total_price')}}</td>
                     </tr>
                      </tfoot>
                     </table>

@@ -334,7 +334,19 @@ Route::group(['middleware' => ['auth:sanctum'], 'verified'], function()
     Route::get('/shopping_cart', [CartController::class, 'index'])->name('shopping_cart.index');
     
     Route::get('shopping_cart/get', [CartController::class, 'update'])->name('shopping_cart.get');
+    Route::get('shopping_cart/delete/{id}', [CartController::class, 'update'])->name('shopping_cart.delete');
+    
     Route::get('shopping_cart/add_selectivo_protectors/{id}', [CartController::class, 'add_selectivo_protectors'])->name('shopping_cart.add_selectivo_protectors');
+    Route::get('shopping_cart/add_selectivo_carga_pesada/{id}', [CartController::class, 'add_selectivo_carga_pesada'])->name('shopping_cart.add_selectivo_carga_pesada');
+    // Route::get('shopping_cart/add_selectivo_protectors/{id}', [CartController::class, 'add_selectivo_protectors'])->name('shopping_cart.add_selectivo_protectors');
+    // Route::get('shopping_cart/add_selectivo_protectors/{id}', [CartController::class, 'add_selectivo_protectors'])->name('shopping_cart.add_selectivo_protectors');
+    // Route::get('shopping_cart/add_selectivo_protectors/{id}', [CartController::class, 'add_selectivo_protectors'])->name('shopping_cart.add_selectivo_protectors');
+    // Route::get('shopping_cart/add_selectivo_protectors/{id}', [CartController::class, 'add_selectivo_protectors'])->name('shopping_cart.add_selectivo_protectors');
+    // Route::get('shopping_cart/add_selectivo_protectors/{id}', [CartController::class, 'add_selectivo_protectors'])->name('shopping_cart.add_selectivo_protectors');
+    // Route::get('shopping_cart/add_selectivo_protectors/{id}', [CartController::class, 'add_selectivo_protectors'])->name('shopping_cart.add_selectivo_protectors');
+    // Route::get('shopping_cart/add_selectivo_protectors/{id}', [CartController::class, 'add_selectivo_protectors'])->name('shopping_cart.add_selectivo_protectors');
+    // Route::get('shopping_cart/add_selectivo_protectors/{id}', [CartController::class, 'add_selectivo_protectors'])->name('shopping_cart.add_selectivo_protectors');
+    // Route::get('shopping_cart/add_selectivo_protectors/{id}', [CartController::class, 'add_selectivo_protectors'])->name('shopping_cart.add_selectivo_protectors');
     
 
 });

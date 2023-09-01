@@ -10,6 +10,8 @@ use App\Models\Height;
 use App\Models\PriceList;
 use App\Models\PriceListScrew;
 use App\Models\SelectiveHeavyLoadFrame;
+
+use App\Models\Cart_product;
 use Illuminate\Http\Request;
 
 class FramesController extends Controller

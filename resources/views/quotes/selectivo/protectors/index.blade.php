@@ -74,9 +74,9 @@
                             </tfoot>
                         </table>
                         <div>
-                            <a href="{{route('shopping_cart.add_selectivo_protectors',$Quotation_Id)}}"></a>
+                            <a href="{{route('shopping_cart.add_selectivo_protectors',$Quotation_Id)}}">
                         <button type="button" class="btn btn-outline-primary">Agregar al Carrito</button>
-                        </div>
+                        </div></a>
                     </div>
                 </div>
                 <div class="card-footer">
