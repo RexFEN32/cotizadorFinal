@@ -10,6 +10,7 @@ use App\Models\HeightStructural;
 use App\Models\PriceList;
 use App\Models\PriceListScrew;
 use App\Models\SelectiveStructuralFrame;
+use App\Models\Cart_product;
 use Illuminate\Http\Request;
 
 class StructuralFrameworksController extends Controller
