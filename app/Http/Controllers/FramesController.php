@@ -119,14 +119,8 @@ class FramesController extends Controller
                     $SHLF->sku = $Sku;
                     $SHLF->total_price = $Precio_Total + $CostoTotalCalza + $CostoTotalTaquete;
                     $SHLF->save();
-                    //guardar en el reumen/carrito
-                    Cart_product::destroy(Cart_product::where('type','shlf')->where('quotation_id',$Quotation_Id)->first()->id);
-                    $Cart_product= new Cart_product();
-                    $Cart_product->name='MARCO SELECTIVO CARGA PESADA '.$SHLF->model;
-                    $Cart_product->unit_price=$SHLF->total_price;
-                    $Cart_product->total_price=$SHLF->total_price;
-                    $Cart_product->amount=1;
-                    $Cart_product->save();
+                    
+                    
                 }else{
                     $SHLF = new SelectiveHeavyLoadFrame();
                     $SHLF->quotation_id = $Quotation_Id;
