@@ -61,7 +61,7 @@
                         <a href="{{route('floor_reinforcements.show', $Quotation_Id)}}" class="btn btn-blue mb-2">
                             <i class="fa-solid fa-right-left fa-xl"></i>&nbsp; Corregir
                         </a>
-                        <a href="{{route('selectivo.show', $Quotation_Id)}}" class="btn btn-black mb-2">
+                        <a href="{{route('floor_reinforcements.add_carrito', $Quotation_Id)}}" class="btn btn-black mb-2">
                             <i class="fa-solid fa-rotate-left fa-xl"></i>&nbsp; Guardar
                         </a>
                     </div>

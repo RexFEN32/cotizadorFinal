@@ -341,6 +341,15 @@ Route::group(['middleware' => ['auth:sanctum'], 'verified'], function()
     Route::get('shopping_cart/add_selectivo_marcos_estructurales/{id}', [CartController::class, 'add_selectivo_marcos_estructurales'])->name('shopping_cart.add_selectivo_marcos_estructurales');
     Route::get('shopping_cart/add_selectivo_minimarcos/{id}', [CartController::class, 'add_selectivo_minimarcos'])->name('shopping_cart.add_selectivo_minimarcos');
 
+    
+    Route::get('shopping_cart/selectivo_floors/{id}', [FloorController::class, 'add_carrito'])->name('floors.add_carrito');
+
+    Route::get('shopping_cart/selectivo_floor_reinforcements/{id}', [FloorReinforcementController::class, 'add_carrito'])->name('floor_reinforcements.add_carrito');
+    
+    Route::get('shopping_cart/selectivo_spacers/{id}', [SpacerController::class, 'add_carrito'])->name('spacers.add_carrito');
+    
+
+
     Route::get('shopping_cart/add_selectivo_vigas_tipo_L_2/{id}', [TypeL2JoistController::class, 'add_carrito'])->name('typel2joists.add_carrito');
     Route::get('shopping_cart/add_selectivo_vigas_tipo_L_2/calibre14/{id}', [TypeL2JoistController::class, 'add_carrito14'])->name('typel2joists_caliber14.add_carrito');
     Route::get('shopping_cart/add_selectivo_vigas_tipo_L_2_5/{id}', [TypeL25JoistController::class, 'add_carrito'])->name('typel25joists.add_carrito');
@@ -373,6 +382,7 @@ Route::group(['middleware' => ['auth:sanctum'], 'verified'], function()
     Route::get('shopping_cart/selectivo_two_point_five_in_joist_l_painted_panels/{id}', [PanelController::class, 'selectivo_two_point_five_in_joist_l_painted_panels_ass'])->name('selectivo_two_point_five_in_joist_l_painted_panels_add');
     Route::get('shopping_cart/selectivo_chair_joist_galvanized_panels/{id}', [PanelController::class, 'selectivo_chair_joist_galvanized_panels_add'])->name('selectivo_chair_joist_galvanized_panels_add');
     Route::get('shopping_cart/selectivo_chair_joist_l_painted_panels/{id}', [PanelController::class, 'selectivo_chair_joist_l_painted_panels_add'])->name('selectivo_chair_joist_l_painted_panels_add');
-    
+
+    Route::get('shopping_cart/selectivo_crossbars/{id}', [CrossbarController::class, 'add_carrito'])->name('crossbars.add_carrito');
 });
 

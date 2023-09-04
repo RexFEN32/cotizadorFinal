@@ -100,4 +100,29 @@ class FloorController extends Controller
             return redirect()->route('floors.show',$Quotation_Id)->with('no_existe', 'ok');
         }
     }
+
+
+    public function add_carrito($id){
+        $Quotation_Id = $id;
+        $Quotation=Quotation::find($id);
+        //buscar si en el carrito hay otro SHLF de esta cotizacion y borrarlo
+        $cartl2 = Cart_product::where('quotation_id', $Quotation_Id)->where('type','SF')->first();
+        if($cartl2){
+            Cart_product::destroy($cartl2->id);
+        }
+        //agregar el nuevo al carrito, lo que este en 
+        $SJL2 = SelectiveFloor::where('quotation_id', $Quotation_Id)->first();
+        //guardar en el carrito
+        $Cart_product= new Cart_product();
+        $Cart_product->name='PISO';
+        $Cart_product->type='SF';
+        $Cart_product->unit_price=$SJL2->price_unit;
+        $Cart_product->total_price=$SJL2->total_price;
+        $Cart_product->quotation_id=$Quotation_Id;
+        $Cart_product->user_id=Auth::user()->id;
+        $Cart_product->amount=$SJL2->amount;
+        $Cart_product->save();
+        
+        return redirect()->route('selectivo',$Quotation_Id);
+    }
 }

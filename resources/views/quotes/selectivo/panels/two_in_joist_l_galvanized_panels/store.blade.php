@@ -43,7 +43,7 @@
                             </tr>
                             <tr class="text-right">
                                 <td>m<sup>2</sup> {{$M2}}</td>
-                                
+
                             </tr>
                             <tr class="font-bold text-right text-1xl">
                                 <td colspan="2">Costo x Unidad: ${{number_format($PriceUnit, 2)}}</td>

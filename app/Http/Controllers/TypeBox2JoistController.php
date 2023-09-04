@@ -304,7 +304,7 @@ class TypeBox2JoistController extends Controller
         $SJL2 = SelectiveJoistBox2Caliber14::where('quotation_id', $Quotation_Id)->first();
         //guardar en el carrito
         $Cart_product= new Cart_product();
-        $Cart_product->name='VIGA TIPO BOX 2 cal 14'.$SJL2->model;
+        $Cart_product->name='VIGA TIPO BOX 2 cal 14';
         $Cart_product->type='SJB214';
         $Cart_product->unit_price=$SJL2->unit_price;
         $Cart_product->total_price=$SJL2->total_price;

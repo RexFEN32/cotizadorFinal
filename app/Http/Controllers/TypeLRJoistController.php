@@ -280,7 +280,7 @@ class TypeLRJoistController extends Controller
         $Cart_product= new Cart_product();
         $Cart_product->name='VIGA TIPO LR'.$SJL2->model;
         $Cart_product->type='SJLR';
-        $Cart_product->unit_price=$SJL->unit_price;
+        $Cart_product->unit_price=$SJL2->unit_price;
         $Cart_product->total_price=$SJL2->total_price;
         $Cart_product->quotation_id=$Quotation_Id;
         $Cart_product->user_id=Auth::user()->id;
