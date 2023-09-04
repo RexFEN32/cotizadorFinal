@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Crossbar;
 use App\Models\SelectiveCrossbar;
 use Illuminate\Http\Request;
+use App\Models\Cart_product;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Quotation;
 
 class CrossbarController extends Controller
 {

@@ -6,7 +6,9 @@ use App\Models\Joist;
 use App\Models\PriceListAuxiliar;
 use App\Models\Wood;
 use Illuminate\Http\Request;
-
+use App\Models\Cart_product;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Quotation;
 class WoodController extends Controller
 {
     public function selectivo_woods_index($id)

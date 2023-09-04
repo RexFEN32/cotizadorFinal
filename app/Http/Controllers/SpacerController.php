@@ -7,7 +7,9 @@ use App\Models\PriceListScrew;
 use App\Models\SelectiveSpacer;
 use App\Models\Spacer;
 use Illuminate\Http\Request;
-
+use App\Models\Cart_product;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Quotation;
 class SpacerController extends Controller
 {
     public function show($id)

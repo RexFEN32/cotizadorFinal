@@ -210,8 +210,7 @@ class TypeChairJoistController extends Controller
             'LoadingCapacities',
             'TypeLJoists',
             'Quotation_Id',
-            'CantidadClavijas',
-            'CostoTotalClavijas',
+            
         ));
     }
 

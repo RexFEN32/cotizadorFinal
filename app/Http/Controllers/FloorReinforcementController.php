@@ -6,7 +6,9 @@ use App\Models\FloorReinforcement;
 use App\Models\PriceList;
 use App\Models\SelectiveFloorReinforcement;
 use Illuminate\Http\Request;
-
+use App\Models\Cart_product;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Quotation;
 class FloorReinforcementController extends Controller
 {
     public function show($id)
