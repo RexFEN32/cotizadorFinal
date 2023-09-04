@@ -384,5 +384,10 @@ Route::group(['middleware' => ['auth:sanctum'], 'verified'], function()
     Route::get('shopping_cart/selectivo_chair_joist_l_painted_panels/{id}', [PanelController::class, 'selectivo_chair_joist_l_painted_panels_add'])->name('selectivo_chair_joist_l_painted_panels_add');
 
     Route::get('shopping_cart/selectivo_crossbars/{id}', [CrossbarController::class, 'add_carrito'])->name('crossbars.add_carrito');
+    Route::get('shopping_cart/selectivo_grills/{id}', [GrillController::class, 'add_carrito'])->name('selectivo_grills.add_carrito');
+    Route::get('shopping_cart/selectivo_woods/{id}', [WoodController::class, 'add_carrito'])->name('selectivo_woods.add_carrito');
+    Route::get('/shopping_cartselectivo_special/{id}', [QuotationSpecialController::class, 'add_carrito'])->name('selectivo_special.add_carrito');
+    Route::get('shopping_cart/selectivo_administratives/{id}', [QuotationAdministrativeController::class, 'add_carrito'])->name('selectivo_administratives.add_carrito');
+    
 });
 
