@@ -378,8 +378,8 @@ Route::group(['middleware' => ['auth:sanctum'], 'verified'], function()
     
     Route::get('shopping_cart/selectivo_two_in_joist_l_galvanized_panels/{id}', [PanelController::class, 'selectivo_two_in_joist_l_galvanized_panels_add'])->name('selectivo_two_in_joist_l_galvanized_panels_add');
     Route::get('shopping_cart/selectivo_two_in_joist_l_painted_panels/{id}', [PanelController::class, 'selectivo_two_in_joist_l_painted_panels_ass'])->name('selectivo_two_in_joist_l_painted_panels_add');
-    Route::get('shopping_cart/selectivo_two_point_five_in_joist_l_galvanized_panels/{id}', [PanelController::class, 'selectivo_two_point_five_in_joist_l_galvanized_panels_ass'])->name('selectivo_two_point_five_in_joist_l_galvanized_panels_add');
-    Route::get('shopping_cart/selectivo_two_point_five_in_joist_l_painted_panels/{id}', [PanelController::class, 'selectivo_two_point_five_in_joist_l_painted_panels_ass'])->name('selectivo_two_point_five_in_joist_l_painted_panels_add');
+    Route::get('shopping_cart/selectivo_two_point_five_in_joist_l_galvanized_panels/{id}', [PanelController::class, 'selectivo_two_point_five_in_joist_l_galvanized_panels_add'])->name('selectivo_two_point_five_in_joist_l_galvanized_panels_add');
+    Route::get('shopping_cart/selectivo_two_point_five_in_joist_l_painted_panels/{id}', [PanelController::class, 'selectivo_two_point_five_in_joist_l_painted_panels_add'])->name('selectivo_two_point_five_in_joist_l_painted_panels_add');
     Route::get('shopping_cart/selectivo_chair_joist_galvanized_panels/{id}', [PanelController::class, 'selectivo_chair_joist_galvanized_panels_add'])->name('selectivo_chair_joist_galvanized_panels_add');
     Route::get('shopping_cart/selectivo_chair_joist_l_painted_panels/{id}', [PanelController::class, 'selectivo_chair_joist_l_painted_panels_add'])->name('selectivo_chair_joist_l_painted_panels_add');
 

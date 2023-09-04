@@ -237,7 +237,7 @@ class TypeChairJoistController extends Controller
             Cart_product::destroy($cartl2->id);
         }
         //agregar el nuevo al carrito, lo que este en 
-        $SJB2 = SelectiveJoistCair::where('quotation_id', $Quotation_Id)->first();
+        $SJB2 = SelectiveJoistChair::where('quotation_id', $Quotation_Id)->first();
         //guardar en el carrito
         $Cart_product= new Cart_product();
         $Cart_product->name='VIGA TIPO CHAIR'.$SJB2->model;
