@@ -118,13 +118,13 @@ class FloorController extends Controller
         $Cart_product= new Cart_product();
         $Cart_product->name='PISO';
         $Cart_product->type='SF';
-        $Cart_product->unit_price=$SJL2->price_unit;
+        $Cart_product->unit_price=$SJL2->total_price;
         $Cart_product->total_price=$SJL2->total_price;
         $Cart_product->quotation_id=$Quotation_Id;
         $Cart_product->user_id=Auth::user()->id;
         $Cart_product->amount=$SJL2->amount;
         $Cart_product->save();
         
-        return redirect()->route('selectivo',$Quotation_Id);
+        return redirect()->route('selectivo.show',$Quotation_Id);
     }
 }

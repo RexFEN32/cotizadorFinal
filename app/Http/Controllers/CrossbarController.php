@@ -145,6 +145,6 @@ class CrossbarController extends Controller
         $Cart_product->amount=$SJL2->amount;
         $Cart_product->save();
         
-        return redirect()->route('selectivo',$Quotation_Id);
+        return redirect()->route('selectivo.show',$Quotation_Id);
     }
 }

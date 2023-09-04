@@ -43,7 +43,15 @@ class CartController extends Controller
    }
    public function add_selectivo_protectors($id){
     $Quotation_Id = $id;
+    
     $Quotation=Quotation::find($id);
+    $cartl2 = Cart_product::where('quotation_id', $Quotation_Id)->where('type','SPR')->get();
+        if($cartl2->count()>0){
+            foreach($cartl2 as $c){
+                Cart_product::destroy($c->id);
+            }
+            
+        }
     $QuotationProtectors = QuotationProtector::where('quotation_id', $Quotation_Id)->get();
     if(count($QuotationProtectors)>0){
         foreach($QuotationProtectors as $protector){
@@ -52,6 +60,7 @@ class CartController extends Controller
             $product->name=$protector->protector;
             $product->unit_price=$protector->unit_price;
             $product->amount=$protector->amount;
+            $porduct->type='SPR';
             $product->total_price=$protector->total_price;
             $product->quotation_id=$Quotation_Id;
             $product->save();
