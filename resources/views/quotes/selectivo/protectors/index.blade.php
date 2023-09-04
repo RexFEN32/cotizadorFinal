@@ -75,7 +75,7 @@
                         </table>
                         <div>
                             <a href="{{route('shopping_cart.add_selectivo_protectors',$Quotation_Id)}}">
-                        <button type="button" class="btn btn-outline-primary">Agregar al Carrito</button>
+                        <button type="button" class="btn btn-outline-primary">Guardar</button>
                         </div></a>
                     </div>
                 </div>

@@ -14,6 +14,9 @@ use App\Models\TypeL25JoistLength;
 use App\Models\TypeL25JoistLoadingCapacity;
 use Illuminate\Http\Request;
 
+use App\Models\Cart_product;
+use Illuminate\Support\Facades\Auth;
+
 class TypeL25JoistController extends Controller
 {
     public function caliber14_show($id)
@@ -264,5 +267,54 @@ class TypeL25JoistController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function add_carrito($id){
+        $Quotation_Id = $id;
+        $Quotation=Quotation::find($id);
+        //buscar si en el carrito hay otro SHLF de esta cotizacion y borrarlo
+        $cartl2 = Cart_product::where('quotation_id', $Quotation_Id)->where('type','SJL25')->first();
+        if($cartl2){
+            Cart_product::destroy($cartl2->id);
+        }
+        //agregar el nuevo al carrito, lo que este en 
+        $SJL2 = SelectiveJoistL25::where('quotation_id', $Quotation_Id)->first();
+        //guardar en el carrito
+        $Cart_product= new Cart_product();
+        $Cart_product->name='VIGA TIPO L25'.$SJL2->model;
+        $Cart_product->type='SJL25';
+        $Cart_product->unit_price=$SJL2->unit_price;
+        $Cart_product->total_price=$SJL2->total_price;
+        $Cart_product->quotation_id=$Quotation_Id;
+        $Cart_product->user_id=Auth::user()->id;
+        $Cart_product->amount=$SJL2->amount;
+        $Cart_product->save();
+        
+        return redirect()->route('menujoists.show',$Quotation_Id);
+    
+    }
+    
+    public function add_carrito14($id){
+        $Quotation_Id = $id;
+        $Quotation=Quotation::find($id);
+        //buscar si en el carrito hay otro SHLF de esta cotizacion y borrarlo
+        $cartl2 = Cart_product::where('quotation_id', $Quotation_Id)->where('type','SJL2514')->first();
+        if($cartl2){
+            Cart_product::destroy($cartl2->id);
+        }
+        //agregar el nuevo al carrito, lo que este en 
+        $SJL2 = SelectiveJoistL25Caliber14::where('quotation_id', $Quotation_Id)->first();
+        //guardar en el carrito
+        $Cart_product= new Cart_product();
+        $Cart_product->name='VIGA TIPO L25 cal 14'.$SJL2->model;
+        $Cart_product->type='SJL2514';
+        $Cart_product->unit_price=$SJL2->unit_price;
+        $Cart_product->total_price=$SJL2->total_price;
+        $Cart_product->quotation_id=$Quotation_Id;
+        $Cart_product->user_id=Auth::user()->id;
+        $Cart_product->amount=$SJL2->amount;
+        $Cart_product->save();
+        
+        return redirect()->route('menujoists.show',$Quotation_Id);
+    
     }
 }

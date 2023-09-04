@@ -12,6 +12,9 @@ use App\Models\TypeC2JoistCrossbarLength;
 use App\Models\TypeC2JoistLength;
 use App\Models\TypeC2JoistLoadingCapacity;
 use Illuminate\Http\Request;
+use App\Models\Cart_product;
+use Illuminate\Support\Facades\Auth;
+
 
 class TypeC2JoistController extends Controller
 {
@@ -223,4 +226,29 @@ class TypeC2JoistController extends Controller
     {
         //
     }
+    public function add_carrito($id){
+        $Quotation_Id = $id;
+        $Quotation=Quotation::find($id);
+        //buscar si en el carrito hay otro SHLF de esta cotizacion y borrarlo
+        $cartl2 = Cart_product::where('quotation_id', $Quotation_Id)->where('type','SJC2')->first();
+        if($cartl2){
+            Cart_product::destroy($cartl2->id);
+        }
+        //agregar el nuevo al carrito, lo que este en 
+        $SJB2 = SelectiveJoistC2::where('quotation_id', $Quotation_Id)->first();
+        //guardar en el carrito
+        $Cart_product= new Cart_product();
+        $Cart_product->name='VIGA TIPO C 2'.$SJB2->model;
+        $Cart_product->type='SJC2';
+        $Cart_product->unit_price=$SJB2->unit_price;
+        $Cart_product->total_price=$SJB2->total_price;
+        $Cart_product->quotation_id=$Quotation_Id;
+        $Cart_product->user_id=Auth::user()->id;
+        $Cart_product->amount=$SJB2->amount;
+        $Cart_product->save();
+        
+        return redirect()->route('menujoists.show',$Quotation_Id);
+    
+    }
+    
 }

@@ -13,6 +13,8 @@ use App\Models\TypeBox25JoistCrossbarLength;
 use App\Models\TypeBox25JoistLength;
 use App\Models\TypeBox25JoistLoadingCapacity;
 use Illuminate\Http\Request;
+use App\Models\Cart_product;
+use Illuminate\Support\Facades\Auth;
 
 class TypeBox25JoistController extends Controller
 {
@@ -261,5 +263,54 @@ class TypeBox25JoistController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function add_carrito($id){
+        $Quotation_Id = $id;
+        $Quotation=Quotation::find($id);
+        //buscar si en el carrito hay otro SHLF de esta cotizacion y borrarlo
+        $cartl2 = Cart_product::where('quotation_id', $Quotation_Id)->where('type','SJB25')->first();
+        if($cartl2){
+            Cart_product::destroy($cartl2->id);
+        }
+        //agregar el nuevo al carrito, lo que este en 
+        $SJB2 = SelectiveJoistBox25::where('quotation_id', $Quotation_Id)->first();
+        //guardar en el carrito
+        $Cart_product= new Cart_product();
+        $Cart_product->name='VIGA TIPO BOX 25'.$SJB2->model;
+        $Cart_product->type='SJB25';
+        $Cart_product->unit_price=$SJB2->unit_price;
+        $Cart_product->total_price=$SJB2->total_price;
+        $Cart_product->quotation_id=$Quotation_Id;
+        $Cart_product->user_id=Auth::user()->id;
+        $Cart_product->amount=$SJB2->amount;
+        $Cart_product->save();
+        
+        return redirect()->route('menujoists.show',$Quotation_Id);
+    
+    }
+    
+    public function add_carrito14($id){
+        $Quotation_Id = $id;
+        $Quotation=Quotation::find($id);
+        //buscar si en el carrito hay otro SHLF de esta cotizacion y borrarlo
+        $cartl2 = Cart_product::where('quotation_id', $Quotation_Id)->where('type','SJB2514')->first();
+        if($cartl2){
+            Cart_product::destroy($cartl2->id);
+        }
+        //agregar el nuevo al carrito, lo que este en 
+        $SJL2 = SelectiveJoistBox25Caliber14::where('quotation_id', $Quotation_Id)->first();
+        //guardar en el carrito
+        $Cart_product= new Cart_product();
+        $Cart_product->name='VIGA TIPO BOX 25 cal 14'.$SJL2->model;
+        $Cart_product->type='SJB2514';
+        $Cart_product->unit_price=$SJL2->unit_price;
+        $Cart_product->total_price=$SJL2->total_price;
+        $Cart_product->quotation_id=$Quotation_Id;
+        $Cart_product->user_id=Auth::user()->id;
+        $Cart_product->amount=$SJL2->amount;
+        $Cart_product->save();
+        
+        return redirect()->route('menujoists.show',$Quotation_Id);
+    
     }
 }

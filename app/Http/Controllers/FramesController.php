@@ -137,13 +137,7 @@ class FramesController extends Controller
                     $SHLF->sku = $Sku;
                     $SHLF->total_price = $Precio_Total + $CostoTotalCalza + $CostoTotalTaquete;
                     $SHLF->save();
-                    //guardar en el carrito
-                    $Cart_product= new Cart_product();
-                    $Cart_product->name='MARCO SELECTIVO CARGA PESADA '.$SHLF->model;
-                    $Cart_product->unit_price=$SHLF->total_price;
-                    $Cart_product->total_price=$SHLF->total_price;
-                    $Cart_product->amount=1;
-                    $Cart_product->save();
+                    
 
                 }
 

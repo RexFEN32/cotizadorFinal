@@ -11,6 +11,9 @@ use App\Models\TypeLRJoistCamber;
 use App\Models\TypeLRJoistCrossbarLength;
 use App\Models\TypeLRJoistLength;
 use App\Models\TypeLRJoistLoadingCapacity;
+use App\Models\Cart_product;
+use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Http\Request;
 
 class TypeLRJoistController extends Controller
@@ -262,5 +265,54 @@ class TypeLRJoistController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function add_carrito($id){
+        $Quotation_Id = $id;
+        $Quotation=Quotation::find($id);
+        //buscar si en el carrito hay otro SHLF de esta cotizacion y borrarlo
+        $cartl2 = Cart_product::where('quotation_id', $Quotation_Id)->where('type','SJLR')->first();
+        if($cartl2){
+            Cart_product::destroy($cartl2->id);
+        }
+        //agregar el nuevo al carrito, lo que este en 
+        $SJL2 = SelectiveJoistLR::where('quotation_id', $Quotation_Id)->first();
+        //guardar en el carrito
+        $Cart_product= new Cart_product();
+        $Cart_product->name='VIGA TIPO LR'.$SJL2->model;
+        $Cart_product->type='SJLR';
+        $Cart_product->unit_price=$SJL->unit_price;
+        $Cart_product->total_price=$SJL2->total_price;
+        $Cart_product->quotation_id=$Quotation_Id;
+        $Cart_product->user_id=Auth::user()->id;
+        $Cart_product->amount=$SJL2->amount;
+        $Cart_product->save();
+        
+        return redirect()->route('menujoists.show',$Quotation_Id);
+    
+    }
+    
+    public function add_carrito14($id){
+        $Quotation_Id = $id;
+        $Quotation=Quotation::find($id);
+        //buscar si en el carrito hay otro SHLF de esta cotizacion y borrarlo
+        $cartl2 = Cart_product::where('quotation_id', $Quotation_Id)->where('type','SJLR14')->first();
+        if($cartl2){
+            Cart_product::destroy($cartl2->id);
+        }
+        //agregar el nuevo al carrito, lo que este en 
+        $SJL2 = SelectiveJoistLRCaliber14::where('quotation_id', $Quotation_Id)->first();
+        //guardar en el carrito
+        $Cart_product= new Cart_product();
+        $Cart_product->name='VIGA TIPO LR cal 14'.$SJL2->model;
+        $Cart_product->type='SJLR14';
+        $Cart_product->unit_price=$SJL2->unit_price;
+        $Cart_product->total_price=$SJL2->total_price;
+        $Cart_product->quotation_id=$Quotation_Id;
+        $Cart_product->user_id=Auth::user()->id;
+        $Cart_product->amount=$SJL2->amount;
+        $Cart_product->save();
+        
+        return redirect()->route('menujoists.show',$Quotation_Id);
+    
     }
 }

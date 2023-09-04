@@ -109,7 +109,7 @@
                         <a href="{{route('structuralframeworks.show', $Quotation_Id)}}" class="btn btn-blue mb-2">
                             <i class="fa-solid fa-right-left fa-xl"></i>&nbsp; Corregir
                         </a>
-                        <a href="{{route('menuframes.show', $Quotation_Id)}}" class="btn btn-black mb-2">
+                        <a href="{{route('shopping_cart.add_selectivo_marcos_estructurales', $Quotation_Id)}}" class="btn btn-black mb-2">
                             <i class="fa-solid fa-rotate-left fa-xl"></i>&nbsp; Guardar
                         </a>
                     </div>

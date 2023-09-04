@@ -3,7 +3,7 @@
 @section('title', 'COTIZADOR')
 
 @section('content_header')
-    <x-header-cot>CARRITO DE COMPRAS</x-header-cot>
+    <x-header-cot>RESUMEN DE COTIZACION</x-header-cot>
 @stop
 
 @section('content')
@@ -28,7 +28,14 @@
                         <tr>
                             <td>{{$p->name}} </td>
                             <td></td>
-                            <td>{{$p->total_price}} </td>
+                            <td> $ {{number_format( $p->total_price,2)}} </td>
+                            <td><div class="col-6 text-center w-10">
+                                                <a href="{{ route('shopping_cart.destroy', $p->id)}}" class="btn btn-red w-9 h-9">
+                                                <i class="fa fa-trash items-center"></i></span>
+                                                    </a>
+                                                 
+                                               
+                                            </div></td>
                         </tr>
                         @endforeach
                      </tbody>
