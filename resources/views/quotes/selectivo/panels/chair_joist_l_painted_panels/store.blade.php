@@ -57,7 +57,7 @@
                         <a href="{{route('selectivo_chair_joist_l_painted_panels', $Quotation_Id)}}" class="btn btn-blue mb-2">
                             <i class="fa-solid fa-right-left fa-xl"></i>&nbsp; Corregir
                         </a>
-                        <a href="{{route('selectivo_panels', $Quotation_Id)}}" class="btn btn-black mb-2">
+                        <a href="{{route('selectivo_chair_joist_l_painted_panels_add', $Quotation_Id)}}" class="btn btn-black mb-2">
                             <i class="fa-solid fa-rotate-left fa-xl"></i>&nbsp; Guardar
                         </a>
                     </div>

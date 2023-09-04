@@ -14,7 +14,7 @@ use App\Models\TypeC2JoistLoadingCapacity;
 use Illuminate\Http\Request;
 use App\Models\Cart_product;
 use Illuminate\Support\Facades\Auth;
-
+use App\Models\Quotation;
 
 class TypeC2JoistController extends Controller
 {

@@ -13,7 +13,7 @@ use App\Models\TypeL25JoistCrossbarLength;
 use App\Models\TypeL25JoistLength;
 use App\Models\TypeL25JoistLoadingCapacity;
 use Illuminate\Http\Request;
-
+use App\Models\Quotation;
 use App\Models\Cart_product;
 use Illuminate\Support\Facades\Auth;
 

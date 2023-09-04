@@ -13,7 +13,7 @@ use App\Models\TypeLRJoistLength;
 use App\Models\TypeLRJoistLoadingCapacity;
 use App\Models\Cart_product;
 use Illuminate\Support\Facades\Auth;
-
+use App\Models\Quotation;
 use Illuminate\Http\Request;
 
 class TypeLRJoistController extends Controller

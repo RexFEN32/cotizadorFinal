@@ -15,6 +15,7 @@ use App\Models\TypeBox25JoistLoadingCapacity;
 use Illuminate\Http\Request;
 use App\Models\Cart_product;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Quotation;
 
 class TypeBox25JoistController extends Controller
 {

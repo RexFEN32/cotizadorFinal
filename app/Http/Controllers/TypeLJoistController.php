@@ -14,7 +14,7 @@ use App\Models\TypeLJoistLength;
 use App\Models\TypeLJoistLoadingCapacity;
 use App\Models\Cart_product;
 use Illuminate\Support\Facades\Auth;
-
+use App\Models\Quotation;
 use Illuminate\Http\Request;
 
 class TypeLJoistController extends Controller

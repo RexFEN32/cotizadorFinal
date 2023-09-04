@@ -14,7 +14,7 @@ use App\Models\TypeChairJoistLoadingCapacity;
 use Illuminate\Http\Request;
 use App\Models\Cart_product;
 use Illuminate\Support\Facades\Auth;
-
+use App\Models\Quotation;
 
 class TypeChairJoistController extends Controller
 {

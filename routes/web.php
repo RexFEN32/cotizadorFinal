@@ -339,6 +339,7 @@ Route::group(['middleware' => ['auth:sanctum'], 'verified'], function()
     Route::get('shopping_cart/add_selectivo_protectors/{id}', [CartController::class, 'add_selectivo_protectors'])->name('shopping_cart.add_selectivo_protectors');
     Route::get('shopping_cart/add_selectivo_carga_pesada/{id}', [CartController::class, 'add_selectivo_carga_pesada'])->name('shopping_cart.add_selectivo_carga_pesada');
     Route::get('shopping_cart/add_selectivo_marcos_estructurales/{id}', [CartController::class, 'add_selectivo_marcos_estructurales'])->name('shopping_cart.add_selectivo_marcos_estructurales');
+    Route::get('shopping_cart/add_selectivo_minimarcos/{id}', [CartController::class, 'add_selectivo_minimarcos'])->name('shopping_cart.add_selectivo_minimarcos');
 
     Route::get('shopping_cart/add_selectivo_vigas_tipo_L_2/{id}', [TypeL2JoistController::class, 'add_carrito'])->name('typel2joists.add_carrito');
     Route::get('shopping_cart/add_selectivo_vigas_tipo_L_2/calibre14/{id}', [TypeL2JoistController::class, 'add_carrito14'])->name('typel2joists_caliber14.add_carrito');
@@ -357,6 +358,21 @@ Route::group(['middleware' => ['auth:sanctum'], 'verified'], function()
     Route::get('shopping_cart/add_selectivo_vigas_tipo_Chair/{id}', [TypeChairJoistController::class, 'add_carrito'])->name('typechairjoists.add_carrito');
     Route::get('shopping_cart/add_selectivo_vigas_tipo_Chair/calibre14/{id}', [TypeChairJoistController::class, 'add_carrito14'])->name('typechairjoists_caliber14.add_carrito');
 
-
+    // Route::get('shopping_cart/selectivo_freights/{id}', [FreightController::class, 'selectivo_show'])->name('selectivo_freights.show');
+    // Route::get('shopping_cart/selectivo_transports/{id}', [FreightController::class, 'selectivo_transports'])->name('selectivo_transports');
+    // Route::post('shopping_cart/selectivo_transports_add', [FreightController::class, 'selectivo_transports_add'])->name('selectivo_transports_add');
+    // Route::get('shopping_cart/selectivo_travel_assignments/{id}', [FreightController::class, 'selectivo_travel_assignments'])->name('selectivo_travel_assignments');
+    // Route::get('shopping_cart/selectivo_quotation_travel_assignments/{id}', [FreightController::class, 'selectivo_quotation_travel_assignments'])->name('selectivo_quotation_travel_assignments');
+    // Route::get('shopping_cart/selectivo_installs/{id}', [FreightController::class, 'selectivo_installs'])->name('selectivo_installs');
+    // Route::post('shopping_cart/selectivo_travel_assignments_add', [FreightController::class, 'selectivo_travel_assignments_add'])->name('selectivo_travel_assignments_add');
+    // Route::post('shopping_cart/selectivo_fiut_add', [FreightController::class, 'selectivo_fiut_add'])->name('selectivo_fiut_add');
+    
+    Route::get('shopping_cart/selectivo_two_in_joist_l_galvanized_panels/{id}', [PanelController::class, 'selectivo_two_in_joist_l_galvanized_panels_add'])->name('selectivo_two_in_joist_l_galvanized_panels_add');
+    Route::get('shopping_cart/selectivo_two_in_joist_l_painted_panels/{id}', [PanelController::class, 'selectivo_two_in_joist_l_painted_panels_ass'])->name('selectivo_two_in_joist_l_painted_panels_add');
+    Route::get('shopping_cart/selectivo_two_point_five_in_joist_l_galvanized_panels/{id}', [PanelController::class, 'selectivo_two_point_five_in_joist_l_galvanized_panels_ass'])->name('selectivo_two_point_five_in_joist_l_galvanized_panels_add');
+    Route::get('shopping_cart/selectivo_two_point_five_in_joist_l_painted_panels/{id}', [PanelController::class, 'selectivo_two_point_five_in_joist_l_painted_panels_ass'])->name('selectivo_two_point_five_in_joist_l_painted_panels_add');
+    Route::get('shopping_cart/selectivo_chair_joist_galvanized_panels/{id}', [PanelController::class, 'selectivo_chair_joist_galvanized_panels_add'])->name('selectivo_chair_joist_galvanized_panels_add');
+    Route::get('shopping_cart/selectivo_chair_joist_l_painted_panels/{id}', [PanelController::class, 'selectivo_chair_joist_l_painted_panels_add'])->name('selectivo_chair_joist_l_painted_panels_add');
+    
 });
 

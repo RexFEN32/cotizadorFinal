@@ -13,7 +13,7 @@ use App\Models\TypeStructuralJoistLength;
 use App\Models\TypeStructuralJoistLoadingCapacity;
 use App\Models\Cart_product;
 use Illuminate\Support\Facades\Auth;
-
+use App\Models\Quotation;
 use Illuminate\Http\Request;
 
 class TypeStructuralJoistController extends Controller

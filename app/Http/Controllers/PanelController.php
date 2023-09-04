@@ -15,6 +15,10 @@ use App\Models\TwoInJoistLGalvanizedPanel;
 use App\Models\TwoInJoistLPaintedPanel;
 use App\Models\TwoPointFiveInJoistLGalvanizedPanel;
 use App\Models\TwoPointFiveInJoistLPaintedPanel;
+
+use App\Models\Cart_product;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Quotation;
 use Illuminate\Http\Request;
 
 class PanelController extends Controller
@@ -1473,4 +1477,156 @@ class PanelController extends Controller
     {
         //
     }
+
+
+    public function selectivo_two_in_joist_l_galvanized_panels_add($id)
+    {
+        $Quotation_Id = $id;
+        $Quotation=Quotation::find($id);
+        //buscar si en el carrito hay otro SHLF de esta cotizacion y borrarlo
+        $cartl2 = Cart_product::where('quotation_id', $Quotation_Id)->where('type','PG2')->first();
+        if($cartl2){
+            Cart_product::destroy($cartl2->id);
+        }
+        //agregar el nuevo al carrito, lo que este en 
+        $SJL2 = Quot2JGalvanizedPanel::where('quotation_id', $Quotation_Id)->first();
+        //guardar en el carrito
+        $Cart_product= new Cart_product();
+        $Cart_product->name='PANEL GALVANIZADO VIGA L 2 IN'.$SJL2->model;
+        $Cart_product->type='PG2';
+        $Cart_product->unit_price=$SJL2->price_unit;
+        $Cart_product->total_price=$SJL2->total_price;
+        $Cart_product->quotation_id=$Quotation_Id;
+        $Cart_product->user_id=Auth::user()->id;
+        $Cart_product->amount=$SJL2->amount;
+        $Cart_product->save();
+        
+        return redirect()->route('selectivo_panels',$Quotation_Id);
+    }
+
+    public function selectivo_two_in_joist_l_painted_panels_add($id)
+    {
+        $Quotation_Id = $id;
+        $Quotation=Quotation::find($id);
+        //buscar si en el carrito hay otro SHLF de esta cotizacion y borrarlo
+        $cartl2 = Cart_product::where('quotation_id', $Quotation_Id)->where('type','PP2')->first();
+        if($cartl2){
+            Cart_product::destroy($cartl2->id);
+        }
+        //agregar el nuevo al carrito, lo que este en 
+        $SJL2 = Quot2JPaintedPanel::where('quotation_id', $Quotation_Id)->first();
+        //guardar en el carrito
+        $Cart_product= new Cart_product();
+        $Cart_product->name='PANEL PINTADO VIGA L 2 IN'.$SJL2->model;
+        $Cart_product->type='PP2';
+        $Cart_product->unit_price=$SJL2->price_unit;
+        $Cart_product->total_price=$SJL2->total_price;
+        $Cart_product->quotation_id=$Quotation_Id;
+        $Cart_product->user_id=Auth::user()->id;
+        $Cart_product->amount=$SJL2->amount;
+        $Cart_product->save();
+        
+        return redirect()->route('selectivo_panels',$Quotation_Id);
+    }
+
+    public function selectivo_two_point_five_in_joist_l_galvanized_panels_add($id)
+    {
+        $Quotation_Id = $id;
+        $Quotation=Quotation::find($id);
+        //buscar si en el carrito hay otro SHLF de esta cotizacion y borrarlo
+        $cartl2 = Cart_product::where('quotation_id', $Quotation_Id)->where('type','PG25')->first();
+        if($cartl2){
+            Cart_product::destroy($cartl2->id);
+        }
+        //agregar el nuevo al carrito, lo que este en 
+        $SJL2 = Quot25JGalvanizedPanel::where('quotation_id', $Quotation_Id)->first();
+        //guardar en el carrito
+        $Cart_product= new Cart_product();
+        $Cart_product->name='PANEL GALVANIZADO VIGA L 2.5 IN'.$SJL2->model;
+        $Cart_product->type='PG25';
+        $Cart_product->unit_price=$SJL2->price_unit;
+        $Cart_product->total_price=$SJL2->total_price;
+        $Cart_product->quotation_id=$Quotation_Id;
+        $Cart_product->user_id=Auth::user()->id;
+        $Cart_product->amount=$SJL2->amount;
+        $Cart_product->save();
+        
+        return redirect()->route('selectivo_panels',$Quotation_Id);
+    }
+
+    public function selectivo_two_point_five_in_joist_l_painted_panels_add($id)
+    {
+        $Quotation_Id = $id;
+        $Quotation=Quotation::find($id);
+        //buscar si en el carrito hay otro SHLF de esta cotizacion y borrarlo
+        $cartl2 = Cart_product::where('quotation_id', $Quotation_Id)->where('type','PP25')->first();
+        if($cartl2){
+            Cart_product::destroy($cartl2->id);
+        }
+        //agregar el nuevo al carrito, lo que este en 
+        $SJL2 = Quot25PaintedPanel::where('quotation_id', $Quotation_Id)->first();
+        //guardar en el carrito
+        $Cart_product= new Cart_product();
+        $Cart_product->name='PANEL PINTADO VIGA L 2.5 IN'.$SJL2->model;
+        $Cart_product->type='PP25';
+        $Cart_product->unit_price=$SJL2->price_unit;
+        $Cart_product->total_price=$SJL2->total_price;
+        $Cart_product->quotation_id=$Quotation_Id;
+        $Cart_product->user_id=Auth::user()->id;
+        $Cart_product->amount=$SJL2->amount;
+        $Cart_product->save();
+        
+        return redirect()->route('selectivo_panels',$Quotation_Id);
+    }
+
+    public function selectivo_chair_joist_galvanized_panels_add($id)
+    {
+        $Quotation_Id = $id;
+        $Quotation=Quotation::find($id);
+        //buscar si en el carrito hay otro SHLF de esta cotizacion y borrarlo
+        $cartl2 = Cart_product::where('quotation_id', $Quotation_Id)->where('type','PGC')->first();
+        if($cartl2){
+            Cart_product::destroy($cartl2->id);
+        }
+        //agregar el nuevo al carrito, lo que este en 
+        $SJL2 = QuotChairJGalvanizedPanel::where('quotation_id', $Quotation_Id)->first();
+        //guardar en el carrito
+        $Cart_product= new Cart_product();
+        $Cart_product->name='PANEL GALVANIZADO VIGA SILLA'.$SJL2->model;
+        $Cart_product->type='PGC';
+        $Cart_product->unit_price=$SJL2->price_unit;
+        $Cart_product->total_price=$SJL2->total_price;
+        $Cart_product->quotation_id=$Quotation_Id;
+        $Cart_product->user_id=Auth::user()->id;
+        $Cart_product->amount=$SJL2->amount;
+        $Cart_product->save();
+        
+        return redirect()->route('selectivo_panels',$Quotation_Id);
+    }
+
+    public function selectivo_chair_joist_l_painted_panels_add($id)
+    {
+        $Quotation_Id = $id;
+        $Quotation=Quotation::find($id);
+        //buscar si en el carrito hay otro SHLF de esta cotizacion y borrarlo
+        $cartl2 = Cart_product::where('quotation_id', $Quotation_Id)->where('type','PPC')->first();
+        if($cartl2){
+            Cart_product::destroy($cartl2->id);
+        }
+        //agregar el nuevo al carrito, lo que este en 
+        $SJL2 = QuotChairJPaintedPanel::where('quotation_id', $Quotation_Id)->first();
+        //guardar en el carrito
+        $Cart_product= new Cart_product();
+        $Cart_product->name='PANEL PINTADO VIGA SILLA'.$SJL2->model;
+        $Cart_product->type='PPC';
+        $Cart_product->unit_price=$SJL2->price_unit;
+        $Cart_product->total_price=$SJL2->total_price;
+        $Cart_product->quotation_id=$Quotation_Id;
+        $Cart_product->user_id=Auth::user()->id;
+        $Cart_product->amount=$SJL2->amount;
+        $Cart_product->save();
+        
+        return redirect()->route('selectivo_panels',$Quotation_Id);
+    }
+
 }
