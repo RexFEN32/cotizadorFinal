@@ -21,7 +21,7 @@
                             <th>Producto</th>
                             <th>Unidades</th>
                             <th>Precio</th>
-                            <th>  </th>
+                            <th>-  </th>
                         </tr>
                      </thead>
                      <tbody>
@@ -42,10 +42,10 @@
                      </tbody>
                      <tfoot>
                         <tr>
-                            <td></td> 
+                            <td>-</td> 
                             <td>Total</td>
                             <td> {{$Cart_products->sum('total_price')}}</td>
-                            <td> </td>
+                            <td>- </td>
                     </tr>
                      </tfoot>
                     </table>
