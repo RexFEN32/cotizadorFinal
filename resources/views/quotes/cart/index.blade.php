@@ -45,6 +45,7 @@
                             <td></td> 
                             <td>Total</td>
                             <td> {{$Cart_products->sum('total_price')}}</td>
+                            <td> </td>
                     </tr>
                      </tfoot>
                     </table>
