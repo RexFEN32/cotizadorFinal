@@ -14,6 +14,9 @@ use App\Models\QuotationTravelAssignment;
 use App\Models\QuotationUninstall;
 use App\Models\Uninstall;
 use Illuminate\Http\Request;
+use App\Models\Cart_product;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Quotation;
 
 class FreightController extends Controller
 {
