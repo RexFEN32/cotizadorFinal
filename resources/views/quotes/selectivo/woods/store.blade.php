@@ -57,7 +57,7 @@
                         <a href="{{route('selectivo_woods.index', $Woods->quotation_id)}}" class="btn btn-blue mb-2">
                             <i class="fa-solid fa-right-left fa-xl"></i>&nbsp; Corregir
                         </a>
-                        <a href="{{route('selectivo.show', $Woods->quotation_id)}}" class="btn btn-black mb-2">
+                        <a href="{{route('selectivo_woods.add_carrito', $Woods->quotation_id)}}" class="btn btn-black mb-2">
                             <i class="fa-solid fa-rotate-left fa-xl"></i>&nbsp; Guardar
                         </a>
                     </div>

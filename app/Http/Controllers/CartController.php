@@ -60,9 +60,9 @@ class CartController extends Controller
             $product->name=$protector->protector;
             $product->unit_price=$protector->unit_price;
             $product->amount=$protector->amount;
-            $porduct->type='SPR';
             $product->total_price=$protector->total_price;
             $product->quotation_id=$Quotation_Id;
+            $product->type='SPR';
             $product->save();
         }
     }

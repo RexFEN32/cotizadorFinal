@@ -154,4 +154,27 @@ class QuotationSpecialController extends Controller
     {
         //
     }
+    public function add_carrito($id){
+        $Quotation_Id = $id;
+    $Quotation=Quotation::find($id);
+    //buscar si en el carrito hay otro SHLF de esta cotizacion y borrarlo
+    $cartSHLF = Cart_product::where('quotation_id', $Quotation_Id)->where('type','SSP')->first();
+    if($cartSHLF){
+        Cart_product::destroy($cartSHLF->id);
+    }
+    //agregar el nuevo al carrito, lo que este en 
+    $SHLF = QuotationSpecial::where('quotation_id', $Quotation_Id)->first();
+    //guardar en el carrito
+    $Cart_product= new Cart_product();
+    $Cart_product->name='ESPECIAL '.$SHLF->model;
+    $Cart_product->type='SSP';
+    $Cart_product->unit_price=$SHLF->total_price;
+    $Cart_product->total_price=$SHLF->total_price;
+    $Cart_product->quotation_id=$Quotation_Id;
+    $Cart_product->user_id=Auth::user()->id;
+    $Cart_product->amount=1;
+    $Cart_product->save();
+    
+    return redirect()->route('selectivo.show',$Quotation_Id);
+    }
 }

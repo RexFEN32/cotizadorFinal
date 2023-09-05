@@ -62,7 +62,7 @@
                             </div>
                         </div>
                         <div class="form-group p-2 gap-2 flex items-center">
-                            <a href="{{route('selectivo.show', $Quotation_Id)}}" class="btn btn-black mb-2">
+                            <a href="{{route('selectivo_quotation_travel_assignments.add_carrito', $Quotation_Id)}}" class="btn btn-black mb-2">
                                 <i class="fa-solid fa-rotate-left fa-xl"></i>&nbsp; Guardar
                             </a>
                         </div>

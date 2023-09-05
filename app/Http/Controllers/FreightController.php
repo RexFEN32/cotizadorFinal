@@ -383,8 +383,9 @@ class FreightController extends Controller
             $QuotationInstalls = QuotationInstall::where('quotation_id', $request->Quotation_Id)->delete();
             $QuotationUninstalls = QuotationUninstall::where('quotation_id', $request->Quotation_Id)->delete();
         }
+        return $this->selectivo_installs_add_carrito($request->Quotation_Id);
 
-        return redirect()->route('selectivo.show', $request->Quotation_Id);
+        
     }
 
     public function double_deep_show($id)
@@ -788,5 +789,111 @@ class FreightController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function fletes_add_carrito($id)
+    {
+        $Quotation_Id = $id;
+        $Quotation=Quotation::find($id);
+        //buscar si en el carrito hay otro SHLF de esta cotizacion y borrarlo
+        $cartl2 = Cart_product::where('quotation_id', $Quotation_Id)->where('type','SFLETE')->get();
+        if($cartl2->count()>0){
+            foreach($cartl2 as $c){
+                Cart_product::destroy($c->id);
+            }
+            
+        }
+        //agregar el nuevo al carrito, lo que este en 
+        $productos = Packaging::where('quotation_id', $Quotation_Id)->get();
+        //guardar en el carrito
+        foreach($productos as $p){
+            $Cart_product= new Cart_product();
+            $Cart_product->name='FLETE';
+            $Cart_product->type='SFLETE';
+            $Cart_product->unit_price=$p->cost;
+            $Cart_product->total_price=$p->import;
+            $Cart_product->quotation_id=$Quotation_Id;
+            $Cart_product->user_id=Auth::user()->id;
+            $Cart_product->amount=$p->amount;
+            $Cart_product->save();
+        }
+        
+        
+        return redirect()->route('selectivo.show',$Quotation_Id);
+    }
+    public function viaticos_add_carrito($id)
+    {
+        $Quotation_Id = $id;
+        $Quotation=Quotation::find($id);
+        //buscar si en el carrito hay otro SHLF de esta cotizacion y borrarlo
+        $cartl2 = Cart_product::where('quotation_id', $Quotation_Id)->where('type','SVIAT')->get();
+        if($cartl2->count()>0){
+            foreach($cartl2 as $c){
+                Cart_product::destroy($c->id);
+            }
+            
+        }
+        //agregar el nuevo al carrito, lo que este en 
+        $productos = QuotationTravelAssignments::where('quotation_id', $Quotation_Id)->get();
+        //guardar en el carrito
+        foreach($productos as $p){
+            $Cart_product= new Cart_product();
+            $Cart_product->name='VIATICO';
+            $Cart_product->type='SVIAT';
+            $Cart_product->unit_price=$p->cost;
+            $Cart_product->total_price=$p->import;
+            $Cart_product->quotation_id=$Quotation_Id;
+            $Cart_product->user_id=Auth::user()->id;
+            $Cart_product->amount=$p->amount;
+            $Cart_product->save();
+        }
+        
+        return redirect()->route('selectivo.show',$Quotation_Id);
+    }
+    public function selectivo_installs_add_carrito($id)
+    {
+        $Quotation_Id = $id;
+        $Quotation=Quotation::find($id);
+        //buscar si en el carrito hay otro SHLF de esta cotizacion y borrarlo
+        $cartl2 = Cart_product::where('quotation_id', $Quotation_Id)->where('type','SINS')->get();
+        if($cartl2->count()>0){
+            foreach($cartl2 as $c){
+                Cart_product::destroy($c->id);
+            }
+        }
+        $cartl2 = Cart_product::where('quotation_id', $Quotation_Id)->where('type','SUINS')->get();
+        if($cartl2->count()>0){
+            foreach($cartl2 as $c){
+                Cart_product::destroy($c->id);
+            }
+        }
+        //agregar el nuevo al carrito, lo que este en 
+        $productos = QuotationInstall::where('quotation_id', $Quotation_Id)->get();
+        //guardar en el carrito
+        foreach($productos as $p){
+            $Cart_product= new Cart_product();
+            $Cart_product->name='INSTALACION';
+            $Cart_product->type='SINS';
+            $Cart_product->unit_price=$p->cost;
+            $Cart_product->total_price=$p->import;
+            $Cart_product->quotation_id=$Quotation_Id;
+            $Cart_product->user_id=Auth::user()->id;
+            $Cart_product->amount=$p->amount;
+            $Cart_product->save();
+        }
+        $productos = QuotationUnistall::where('quotation_id', $Quotation_Id)->get();
+        //guardar en el carrito
+        foreach($productos as $p){
+            $Cart_product= new Cart_product();
+            $Cart_product->name='DESINSTALACION';
+            $Cart_product->type='SUINS';
+            $Cart_product->unit_price=$p->cost;
+            $Cart_product->total_price=$p->import;
+            $Cart_product->quotation_id=$Quotation_Id;
+            $Cart_product->user_id=Auth::user()->id;
+            $Cart_product->amount=$p->amount;
+            $Cart_product->save();
+        }
+        
+        return redirect()->route('selectivo.show',$Quotation_Id);
     }
 }
