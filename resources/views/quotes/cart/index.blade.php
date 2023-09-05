@@ -19,15 +19,16 @@
                      <thead >
                         <tr>
                             <th>Producto</th>
-                            <th>SKU</th>
+                            <th>Unidades</th>
                             <th>Precio</th>
+                            <th>  </th>
                         </tr>
                      </thead>
                      <tbody>
                         @foreach($Cart_products as $p)
                         <tr>
                             <td>{{$p->name}} </td>
-                            <td></td>
+                            <td> {{$p->amount}}</td>
                             <td> $ {{number_format( $p->total_price,2)}} </td>
                             <td><div class="col-6 text-center w-10">
                                                 <a href="{{ route('shopping_cart.destroy', $p->id)}}" class="btn btn-red w-9 h-9">
@@ -52,4 +53,10 @@
             </div>
         </div>
     </div>
+@stop
+
+
+@section('js')
+<script type="text/javascript" src="{{ asset('vendor/mystylesjs/js/table_quotation_protectors.js') }}"></script>
+
 @stop
