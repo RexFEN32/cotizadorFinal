@@ -120,4 +120,15 @@ public function destroy($id){
  Cart_product::destroy($id);
  return redirect()->route('shopping_cart.index');
 }
+
+public function vaciar(){
+    $productos=Cart_product::where('user_id',Auth::user()->id)->get();
+    foreach($productos as $p){
+        Cart_product::destroy($p->id);
+    
+    }
+    
+    return redirect()->route('shopping_cart.index');
+   }
+   
 }

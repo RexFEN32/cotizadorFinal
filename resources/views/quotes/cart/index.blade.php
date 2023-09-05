@@ -49,7 +49,7 @@
                             <td></td>
                             <td>-</td> 
                             <td>Total</td>
-                            <td> {{$Cart_products->sum('total_price')}}</td>
+                            <td> $ {{number_format($Cart_products->sum('total_price'),2)}}</td>
                             <td>- </td>
                     </tr>
                      </tfoot>
@@ -57,6 +57,9 @@
             <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 g-2">
                 
             </div>
+            <a href="{{route('shopping_cart.vaciar')}}">
+                <button type="button" class="btn btn-danger btn-block">Vaciar Carrito</button>
+            </a>
         </div>
     </div>
 @stop

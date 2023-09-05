@@ -335,6 +335,7 @@ Route::group(['middleware' => ['auth:sanctum'], 'verified'], function()
     
     Route::get('shopping_cart/get', [CartController::class, 'update'])->name('shopping_cart.get');
     Route::get('shopping_cart/delete/{id}', [CartController::class, 'destroy'])->name('shopping_cart.destroy');
+    Route::get('shopping_cart/vaciar', [CartController::class, 'vaciar'])->name('shopping_cart.vaciar');
     
     Route::get('shopping_cart/add_selectivo_protectors/{id}', [CartController::class, 'add_selectivo_protectors'])->name('shopping_cart.add_selectivo_protectors');
     Route::get('shopping_cart/add_selectivo_carga_pesada/{id}', [CartController::class, 'add_selectivo_carga_pesada'])->name('shopping_cart.add_selectivo_carga_pesada');
@@ -386,8 +387,12 @@ Route::group(['middleware' => ['auth:sanctum'], 'verified'], function()
     Route::get('shopping_cart/selectivo_crossbars/{id}', [CrossbarController::class, 'add_carrito'])->name('crossbars.add_carrito');
     Route::get('shopping_cart/selectivo_grills/{id}', [GrillController::class, 'add_carrito'])->name('selectivo_grills.add_carrito');
     Route::get('shopping_cart/selectivo_woods/{id}', [WoodController::class, 'add_carrito'])->name('selectivo_woods.add_carrito');
-    Route::get('/shopping_cartselectivo_special/{id}', [QuotationSpecialController::class, 'add_carrito'])->name('selectivo_special.add_carrito');
+    Route::get('/shopping_cart/selectivo_special/{id}', [QuotationSpecialController::class, 'add_carrito'])->name('selectivo_special.add_carrito');
     Route::get('shopping_cart/selectivo_administratives/{id}', [QuotationAdministrativeController::class, 'add_carrito'])->name('selectivo_administratives.add_carrito');
+    
+    Route::get('shopping_cart/selectivo_freights/{id}', [FreightController::class, 'fletes_add_carrito'])->name('selectivo_freights.add_carrito');
+    Route::get('shopping_cart/selectivo_quotation_travel_assignments/{id}', [FreightController::class, 'viaticos_add_carrito'])->name('selectivo_quotation_travel_assignments.add_carrito');
+    Route::get('shopping_cart/selectivo_installs/{id}', [FreightController::class, 'selectivo_installs_add_carrito'])->name('selectivo_installs.add_carrito');
     
 });
 
