@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\PriceListAuxiliar;
 use App\Models\QuotationSpecial;
 use Illuminate\Http\Request;
-
+use App\Models\Cart_product;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Quotation;
 class QuotationSpecialController extends Controller
 {
     public function selectivo_special_index($id)

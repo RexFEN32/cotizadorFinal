@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\PriceListAuxiliar;
 use App\Models\QuotationAdministrative;
 use Illuminate\Http\Request;
+use App\Models\Cart_product;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Quotation;
 
 class QuotationAdministrativeController extends Controller
 {
