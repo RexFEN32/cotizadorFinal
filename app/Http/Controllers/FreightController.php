@@ -11,6 +11,7 @@ use App\Models\TravelAssignment;
 use App\Models\Installation;
 use App\Models\QuotationInstall;
 use App\Models\QuotationTravelAssignment;
+
 use App\Models\QuotationUninstall;
 use App\Models\Uninstall;
 use Illuminate\Http\Request;
@@ -836,7 +837,7 @@ class FreightController extends Controller
             
         }
         //agregar el nuevo al carrito, lo que este en 
-        $productos = QuotationTravelAssignments::where('quotation_id', $Quotation_Id)->get();
+        $productos = QuotationTravelAssignment::where('quotation_id', $Quotation_Id)->get();
         //guardar en el carrito
         foreach($productos as $p){
             $Cart_product= new Cart_product();
@@ -896,6 +897,7 @@ class FreightController extends Controller
             $Cart_product->amount=$p->amount;
             $Cart_product->save();
         }
+        
         
         return redirect()->route('selectivo.show',$Quotation_Id);
     }
