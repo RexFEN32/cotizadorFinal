@@ -13,6 +13,7 @@ DB_USERNAME = os.getenv('DB_USERNAME')
 DB_DATABASE = os.getenv('DB_DATABASE')
 DB_PASSWORD = os.getenv('DB_PASSWORD')
 DB_PORT = os.getenv('DB_PORT')
+print(DB_DATABASE,DB_PASSWORD,DB_PORT,DB_USERNAME)
 cnx = mysql.connector.connect(user=DB_USERNAME,
                               password=DB_PASSWORD,
                               host='localhost',
