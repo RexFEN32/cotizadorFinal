@@ -31,6 +31,6 @@ for i in Estados:
             print(i,j,MyDestiny['cost'].values[0])
             mySql_insert_query = """INSERT INTO `price_lists`(`description`,`caliber`,`type`,`system`,`piece`,`cost`,`f_vta`,`f_desp`,`f_emb`,`f_desc`,`f_total`) VALUES (%s, %s, %s, %s, %s,%s, %s, %s, %s, %s,%s) """
 
-            record = ('Destino'+str(i)+ ' Unidad '+str(j), i, '-', 'DESTINO',i,MyDestiny['cost'].values[0],1.6,2,1.015,0.95,3.419)
+            record = ('Destino '+str(i)+ ' Unidad '+str(j), i, '-', 'DESTINO',j,MyDestiny['cost'].values[0],1.6,2,1.015,0.95,3.419)
             cursor.execute(mySql_insert_query, record)
             cnx.commit()
