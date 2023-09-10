@@ -41,11 +41,11 @@
                                         {{-- @endcan --}}
                                     </div>
                                     <div class="col-6 text-center w-10">
-                                        {{-- @can('BORRAR TRANSPORTES')
+                                        {{-- @can('BORRAR TRANSPORTES')--}}
                                         {!! Form::open(['method'=>'DELETE','route'=>['transports.destroy', $row->id], 'class'=>'DeleteReg' ]) !!}
                                             {!! Form::button('<i class="fa fa-trash items-center"></i>', ['class' => 'btn btn-red h-9 w-9', 'type' => 'submit']) !!}
                                         {!! Form::close() !!}
-                                        {{-- @endcan --}} --}}
+                                        {{-- @endcan --}}
                                     </div>
                                 </div>
                             </td>
