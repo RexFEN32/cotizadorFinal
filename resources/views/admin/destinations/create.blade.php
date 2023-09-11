@@ -40,26 +40,7 @@
                     {!! Form::number('cost',old('cost'), ['class'=>'inputjet w-full text-xs', 'step'=>'0.01']) !!}
                     <x-jet-input-error for='cost' />
                 </div>
-                <div class="form-group">
-                    <x-jet-label value="* F. Vta." />
-                    {!! Form::number('f_vta',old('f_vta'), ['class'=>'inputjet w-full text-xs', 'step'=>'0.001']) !!}
-                    <x-jet-input-error for='f_vta' />
-                </div>
-                <div class="form-group">
-                    <x-jet-label value="* F. Desp." />
-                    {!! Form::number('f_desp',old('f_desp'), ['class'=>'inputjet w-full text-xs', 'step'=>'0.001']) !!}
-                    <x-jet-input-error for='f_desp' />
-                </div>
-                <div class="form-group">
-                    <x-jet-label value="* F. Emb." />
-                    {!! Form::number('f_emb',old('f_emb'), ['class'=>'inputjet w-full text-xs', 'step'=>'0.001']) !!}
-                    <x-jet-input-error for='f_emb' />
-                </div>
-                <div class="form-group">
-                    <x-jet-label value="* F. Desc." />
-                    {!! Form::number('f_desc',old('f_desc'), ['class'=>'inputjet w-full text-xs', 'step'=>'0.001']) !!}
-                    <x-jet-input-error for='f_desc' />
-                </div>
+                
             </div>
             <div class="col-12 text-right p-2 gap-2">
                 <a href="{{ route('destinations.index')}}" class="btn btn-green mb-2">
