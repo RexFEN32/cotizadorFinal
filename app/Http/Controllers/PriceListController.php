@@ -6,6 +6,8 @@ use App\Models\PriceList;
 use App\Models\Steel;
 use App\Models\Destination;
 use App\Models\Transport;
+
+use App\Models\TravelAssignment;
 use Illuminate\Http\Request;
 
 class PriceListController extends Controller
@@ -137,6 +139,48 @@ class PriceListController extends Controller
 
 
         }else{
+             if($PriceLists->system=='VIATICO'){
+                $rules = [
+                    'description' => 'required',
+                    'cost' => 'required',
+                    'f_vta' => 'required',
+                    'f_desp' => 'required',
+                    'f_emb' => 'required',
+                    'f_desc' => 'required',
+                ];
+        
+                $messages = [
+                    'description.required' => 'Escriba la descripción',
+                    'cost.required' => 'Capture El costo',
+                    'f_vta.required' => 'Escriba el Factor de Venta',
+                    'f_desp.required' => 'Escriba el Factor de Despiste',
+                    'f_emb.required' => 'Escriba el Factor de Embarque',
+                    'f_desc.required' => 'Escriba el Factor de Descuento',
+                ];
+                $request->validate($rules, $messages);
+                $F_Total = ($request->f_vta * $request->f_desp * $request->f_emb) / $request->f_desc;
+     
+                $PriceLists->cost=$request->cost;
+                $PriceLists->f_vta = $request->f_vta;
+                $PriceLists->f_desp = $request->f_desp;
+                $PriceLists->f_emb = $request->f_emb;
+                $PriceLists->f_desc = $request->f_desc;
+                $PriceLists->f_total = $F_Total;
+                $PriceLists->save();
+                $Viaticos=TravelAssignment::all();
+                
+                foreach($Viaticos as $d){
+                    $d->f_vta = $request->f_vta;
+                    $d->f_desp = $request->f_desp;
+                    $d->f_emb = $request->f_emb;
+                    $d->f_desc = $request->f_desc;
+                    $d->f_total = $F_Total;
+                    $d->save();
+                }
+                return redirect()->route('price_lists.index')->with('update_reg', 'ok');
+                
+    
+            }else{
             $rules = [
                 'description' => 'required',
                 'caliber' => 'required',
@@ -187,7 +231,7 @@ class PriceListController extends Controller
             }else{
                 return redirect()->route('price_lists.edit', $id)->with('no_existe_acero', 'ok');
             }
-        }
+        }}
                 
     }
 

@@ -25,11 +25,7 @@
                             <th>Unidad</th>
                             <th>SKU</th>
                             <th>Costo</th>
-                            <th>F. Vta</th>
-                            <th>F. Desp</th>
-                            <th>F. Emb</th>
-                            <th>F. Desc</th>
-                            <th>F. Total</th>
+                            
                             <th></th>
                         </tr>
                     </thead>
@@ -39,12 +35,8 @@
                             <td class="w-70 text-start">{{$row->description}}</td>
                             <td class="w-70 text-start">{{$row->unit}}</td>
                             <td class="w-70 text-start">{{$row->sku}}</td>
-                            <td class="w-70 text-end">$ {{$row->cost}}</td>
-                            <td class="w-70 text-end">{{$row->f_vta}}</td>
-                            <td class="w-70 text-end">{{$row->f_desp}}</td>
-                            <td class="w-70 text-end">{{$row->f_emb}}</td>
-                            <td class="w-70 text-end">{{$row->f_desc}}</td>
-                            <td class="w-70 text-end">{{$row->f_total}}</td>
+                            <td class="w-70 text-end">$ {{$row->cost * $row->ftotal}}</td>
+                            
                             <td class="w-20 text-center">
                                 <div class="row">
                                     <div class="col-6 text-center w-10">
