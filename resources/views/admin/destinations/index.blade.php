@@ -24,7 +24,7 @@
                             <th>Destino</th>
                             <th>Estado</th>
                             <th>Unidad</th>
-                            <th>Costo</th>
+                            
                             <th>Costo Total</th>
                             <th></th>
                         </tr>
@@ -35,7 +35,6 @@
                             <td class="w-70 text-start">{{$row->destination}}</td>
                             <td class="w-70 text-start">{{$row->state}}</td>
                             <td class="w-70 text-start">{{$row->unit}}</td>
-                            <td class="w-70 text-center">$ {{$row->cost}}</td>
                             <td class="w-70 text-center">$ {{number_format($row->f_total * $row->cost,2)}}</td>
                             <td class="w-20 text-center">
                                 <div class="row">

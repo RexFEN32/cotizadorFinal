@@ -93,7 +93,7 @@ class PriceListController extends Controller
 
         $PriceLists = PriceList::find($id);
         //caso especial, si se editan destinos
-        if($PriceLists->system=='DESTINO'){
+        if($PriceLists->system=='FLETE'){
             $rules = [
                 'description' => 'required',
                 'cost' => 'required',
@@ -112,12 +112,24 @@ class PriceListController extends Controller
                 'f_desc.required' => 'Escriba el Factor de Descuento',
             ];
             $request->validate($rules, $messages);
+            $F_Total = ($request->f_vta * $request->f_desp * $request->f_emb) / $request->f_desc;
+ 
             $PriceLists->cost=$request->cost;
+            $PriceLists->f_vta = $request->f_vta;
+            $PriceLists->f_desp = $request->f_desp;
+            $PriceLists->f_emb = $request->f_emb;
+            $PriceLists->f_desc = $request->f_desc;
+            $PriceLists->f_total = $F_Total;
             $PriceLists->save();
-            $Destinos=Destination::where('state',$PriceLists->caliber)->where('unit',$PriceLists->piece)->get();
+            $Destinos=Destination::all();
+            
             foreach($Destinos as $d){
-             $d->cost=$request->cost;
-             $d->save();
+                $d->f_vta = $request->f_vta;
+                $d->f_desp = $request->f_desp;
+                $d->f_emb = $request->f_emb;
+                $d->f_desc = $request->f_desc;
+                $d->f_total = $F_Total;
+                $d->save();
             }
             return redirect()->route('price_lists.index')->with('update_reg', 'ok');
             

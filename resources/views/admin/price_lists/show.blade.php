@@ -13,7 +13,7 @@
                 <i class="fas fa-edit"></i>&nbsp; Editar Lista
             </h5>
         </div>
-       @if($PriceLists->system=='DESTINO')
+       @if($PriceLists->system=='FLETE')
        {!! Form::open(['method'=>'PUT','route'=>['price_lists.update',$PriceLists->id]]) !!}
         <div class="row p-4 rounded-b-lg rounded-t-none mb-4 shadow-xl bg-gray-300">
             <div class="col-xs-12 p-2 gap-2">
@@ -22,11 +22,7 @@
                     {!! Form::text('description',$PriceLists->description, ['class'=>'inputjet w-full text-xs uppercase']) !!}
                     <x-jet-input-error for='description' />
                 </div>
-                <div class="form-group">
-                    <x-jet-label value="* Estado" />
-                    {!! Form::text('caliber',$PriceLists->caliber, ['class'=>'inputjet w-full text-xs uppercase']) !!}
-                    <x-jet-input-error for='caliber' />
-                </div>
+                
                 {{--<div class="form-group">
                     <x-jet-label value="* Tipo" />
                     {!! Form::text('type',$PriceLists->type, ['class'=>'inputjet w-full text-xs uppercase']) !!}
@@ -37,11 +33,7 @@
                     {!! Form::text('system',$PriceLists->system, ['class'=>'inputjet w-full text-xs uppercase']) !!}
                     <x-jet-input-error for='system' />
                 </div>
-                <div class="form-group">
-                    <x-jet-label value="* Unidad" />
-                    {!! Form::text('piece',$PriceLists->piece, ['class'=>'inputjet w-full text-xs uppercase']) !!}
-                    <x-jet-input-error for='piece' />
-                </div> 
+                
                 <div class="form-group">
                     <x-jet-label value="* Costo" />
                     {!! Form::number('cost',$PriceLists->cost, ['class'=>'inputjet w-full text-xs', 'step'=>'0.01']) !!}

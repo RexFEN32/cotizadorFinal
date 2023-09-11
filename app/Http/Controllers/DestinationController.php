@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Destination;
 use App\Models\Transport;
+use App\Models\PriceList;
 use Illuminate\Http\Request;
 
 class DestinationController extends Controller
@@ -29,10 +30,6 @@ class DestinationController extends Controller
             'state' => 'required',
             'unit' => 'required',
             'cost' => 'required',
-            'f_vta' => 'required',
-            'f_desp' => 'required',
-            'f_emb' => 'required',
-            'f_desc' => 'required',
         ];
 
         $messages = [
@@ -40,25 +37,22 @@ class DestinationController extends Controller
             'state.required' => 'Escriba el Estado del Destino',
             'unit.required' => 'Seleccione el tipo de Unidad',
             'cost.required' => 'Capture el Costo',
-            'f_vta.required' => 'Escriba el Factor de Venta',
-            'f_desp.required' => 'Escriba el Factor de Despiste',
-            'f_emb.required' => 'Escriba el Factor de Embarque',
-            'f_desc.required' => 'Escriba el Factor de Descuento',
         ];
 
         $request->validate($rules, $messages);
-
-        $F_Total = ($request->f_vta * $request->f_desp * $request->f_emb) / $request->f_desc;
+        $PriceList=PriceList::where('system','FLETE')->first();
+        
+        $F_Total = ($PriceList->f_vta * $PriceList->f_desp * $PriceList->f_emb) / $PriceList->f_desc;
 
         $Destinations = new Destination();
         $Destinations->destination = $request->destination;
         $Destinations->state = $request->state;
         $Destinations->unit = $request->unit;
         $Destinations->cost = $request->cost;
-        $Destinations->f_vta = $request->f_vta;
-        $Destinations->f_desp = $request->f_desp;
-        $Destinations->f_emb = $request->f_emb;
-        $Destinations->f_desc = $request->f_desc;
+        $Destinations->f_vta = $PriceList->f_vta;
+        $Destinations->f_desp = $PriceList->f_desp;
+        $Destinations->f_emb = $PriceList->f_emb;
+        $Destinations->f_desc = $PriceList->f_desc;
         $Destinations->f_total = $F_Total;
         $Destinations->save();
 
