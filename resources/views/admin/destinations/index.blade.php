@@ -55,7 +55,7 @@
                                     </div>
                                 </div>
                             </td>
-                            <th></th>
+                            <td></td>
                         </tr>
                         @endforeach
                     </tbody>
