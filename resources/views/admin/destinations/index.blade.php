@@ -27,7 +27,6 @@
                             
                             <th>Costo Total</th>
                             <th></th>
-                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -55,7 +54,6 @@
                                     </div>
                                 </div>
                             </td>
-                            <td></td>
                         </tr>
                         @endforeach
                     </tbody>
