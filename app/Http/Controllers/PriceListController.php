@@ -94,6 +94,7 @@ class PriceListController extends Controller
     {
 
         $PriceLists = PriceList::find($id);
+        
         //caso especial, si se editan destinos
         if($PriceLists->system=='FLETE'){
             $rules = [
@@ -142,7 +143,7 @@ class PriceListController extends Controller
              if($PriceLists->system=='VIATICO'){
                 $rules = [
                     'description' => 'required',
-                    'cost' => 'required',
+                
                     'f_vta' => 'required',
                     'f_desp' => 'required',
                     'f_emb' => 'required',
@@ -151,16 +152,17 @@ class PriceListController extends Controller
         
                 $messages = [
                     'description.required' => 'Escriba la descripción',
-                    'cost.required' => 'Capture El costo',
+                  
                     'f_vta.required' => 'Escriba el Factor de Venta',
                     'f_desp.required' => 'Escriba el Factor de Despiste',
                     'f_emb.required' => 'Escriba el Factor de Embarque',
                     'f_desc.required' => 'Escriba el Factor de Descuento',
                 ];
+                
                 $request->validate($rules, $messages);
                 $F_Total = ($request->f_vta * $request->f_desp * $request->f_emb) / $request->f_desc;
      
-                $PriceLists->cost=$request->cost;
+               
                 $PriceLists->f_vta = $request->f_vta;
                 $PriceLists->f_desp = $request->f_desp;
                 $PriceLists->f_emb = $request->f_emb;

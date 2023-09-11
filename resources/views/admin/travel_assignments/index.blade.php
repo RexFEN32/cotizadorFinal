@@ -35,7 +35,7 @@
                             <td class="w-70 text-start">{{$row->description}}</td>
                             <td class="w-70 text-start">{{$row->unit}}</td>
                             <td class="w-70 text-start">{{$row->sku}}</td>
-                            <td class="w-70 text-end">$ {{$row->cost * $row->f_total}}</td>
+                            <td class="w-70 text-end">$ {{number_format($row->cost * $row->f_total,2)}}</td>
                             
                             <td class="w-20 text-center">
                                 <div class="row">
