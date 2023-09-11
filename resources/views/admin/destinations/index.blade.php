@@ -31,11 +31,11 @@
                     <tbody>
                         @foreach ($Destinations as $row)
                         <tr>
-                            <td class="w-70 text-start">{{$row->destination}}</td>
-                            <td class="w-70 text-start">{{$row->state}}</td>
-                            <td class="w-70 text-start">{{$row->unit}}</td>
-                            <td class="w-70 text-center">$ {{number_format($row->f_total * $row->cost,2)}}</td>
-                            <td class="w-20 text-center">
+                            <td class="w-70 ">{{$row->destination}}</td>
+                            <td class="w-70 ">{{$row->state}}</td>
+                            <td class="w-70 ">{{$row->unit}}</td>
+                            <td class="w-70 ">$ {{number_format($row->f_total * $row->cost,2)}}</td>
+                            <td class="w-20 ">
                                 <div class="row">
                                     <div class="col-6 text-center w-10">
                                     @can('EDITAR DESTINO')

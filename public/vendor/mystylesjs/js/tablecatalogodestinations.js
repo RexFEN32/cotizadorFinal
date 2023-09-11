@@ -5,7 +5,7 @@ if ( $.fn.dataTable.isDataTable( '.tabledestinations' ) ) {
 
         "columnDefs": [
             {
-                "targets": [5],
+                "targets": [6],
                 "searchable": false,
                 "sortable": false,
                 "visible": true,
