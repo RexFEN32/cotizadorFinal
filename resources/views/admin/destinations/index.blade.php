@@ -24,7 +24,6 @@
                             <th>Destino</th>
                             <th>Estado</th>
                             <th>Unidad</th>
-                            
                             <th>Costo Total</th>
                             <th></th>
                         </tr>
@@ -39,18 +38,18 @@
                             <td class="w-20 text-center">
                                 <div class="row">
                                     <div class="col-6 text-center w-10">
-                                    {{-- @can('EDITAR DESTINO')
+                                    @can('EDITAR DESTINO')
                                             <a href="{{ route('destinations.edit', $row->id)}}" class="btn btn-blue w-9 h-9">
                                                 <i class="fas fa-edit"></i></span>
                                             </a>
-                                        @endcan --}}
+                                        @endcan 
                                     </div>
                                     <div class="col-6 text-center w-10">
-                                        {{-- @can('BORRAR DESTINO')
+                                         @can('BORRAR DESTINO')
                                         {!! Form::open(['method'=>'DELETE','route'=>['destinations.destroy', $row->id], 'class'=>'DeleteReg' ]) !!}
                                             {!! Form::button('<i class="fa fa-trash items-center"></i>', ['class' => 'btn btn-red h-9 w-9', 'type' => 'submit']) !!}
                                         {!! Form::close() !!}
-                                        @endcan --}}
+                                        @endcan 
                                     </div>
                                 </div>
                             </td>
