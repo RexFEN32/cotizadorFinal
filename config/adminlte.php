@@ -395,7 +395,7 @@ return [
                 ],
                 [
                     'text' => 'LISTA DE PRECIOS TORNILLERÍA',
-                    'icon' => 'fas fa-fw fa-tools',
+                    'icon' => 'fas fa-fw fa-thumbtack',
                     'route'  => 'price_list_screws.index',
                     // 'can'  => 'VER LISTA DE PRECIOS',
                 ],
