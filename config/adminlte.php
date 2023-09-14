@@ -383,19 +383,19 @@ return [
                 ],
                 [
                     'text' => 'LISTA DE PRECIOS INSTALACIÓN',
-                    'icon' => 'fas fa-fw fa-circle-dollar-to-slot',
+                    'icon' => 'fas fa-fw fa-screwdriver-wrench',
                     'route'  => 'price_list_installs.index',
                     // 'can'  => 'VER LISTA DE PRECIOS',
                 ],
                 [
                     'text' => 'LISTA DE PRECIOS DESINSTALACIÓN',
-                    'icon' => 'fas fa-fw fa-circle-dollar-to-slot',
+                    'icon' => 'fas fa-fw fa-screwdriver-wrench',
                     'route'  => 'price_list_uninstalls.index',
                     // 'can'  => 'VER LISTA DE PRECIOS',
                 ],
                 [
                     'text' => 'LISTA DE PRECIOS TORNILLERÍA',
-                    'icon' => 'fas fa-fw fa-circle-dollar-to-slot',
+                    'icon' => 'fas fa-fw fa-tools',
                     'route'  => 'price_list_screws.index',
                     // 'can'  => 'VER LISTA DE PRECIOS',
                 ],
