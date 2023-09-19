@@ -14,7 +14,7 @@
                 <a href="{{ route('price_list_auxiliars.create')}}" class="btn btn-green">
                     <i class="fas fa-plus-circle"></i>&nbsp; Nuevo
                 </a>
-                @endcan
+                {{--@endcan--}}
             </div>
             <div class="w-100">&nbsp;</div>
             <div class="col-sm-12 table-responsive">
