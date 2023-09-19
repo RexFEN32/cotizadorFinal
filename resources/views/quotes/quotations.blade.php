@@ -42,6 +42,11 @@
                                                 <i class="fas fa-edit"></i></span>
                                             </a>
                                         </div>
+                                        <div class="col-6 text-center w-10">
+                                            <a href="{{route('redaccion', $row->id)}}" class="btn btn-green w-9 h-9">
+                                                <i class="fas fa-file"></i></span>
+                                            </a>
+                                        </div>
                                         {{--  <div class="col-6 text-center w-10">
                                             <form class="DeleteReg" action=" " method="POST">
                                                 @csrf
@@ -49,6 +54,7 @@
                                                 <button type="submit" class="btn btn-red h-9 w-9">
                                                     <i class="fas fa-trash items-center"></i>
                                                 </button>
+                                                
                                             </form>
                                         </div>  --}}
                                     </div>

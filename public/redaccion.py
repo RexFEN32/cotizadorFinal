@@ -26,12 +26,16 @@ cnx = mysql.connector.connect(user=DB_USERNAME,
                               port=DB_PORT,
                               database=DB_DATABASE,
                               use_pure=False)
+cotizacion=pd.read_sql("select * from quotations where id ="+str(sys.argv[1]),cnx)
+cliente=pd.read_sql("""select * from customers where customers.id="""+str(cotizacion['customer_id'].values[0]),cnx)
 
 doc = DocxTemplate("plantilla.docx")
 
 context={
-    'cliente':'Cliente prueba sa de cv'
-}
+    'cliente':cliente['customer'].values[0],
+    'direccion':cliente['address']+' '+cliente['outdoor']+', '+cliente['city']+' '+cliente['suburb']+' '+cliente['state']+', cp: '+str(cliente['zip_code'])
+} 
+print(context['direccion'])
 doc.render(context) 
-doc.save("Cotizacion"+str(sys.argv[1])+".docx")
+doc.save("storage/Cotizacion"+str(sys.argv[1])+".docx")
       
