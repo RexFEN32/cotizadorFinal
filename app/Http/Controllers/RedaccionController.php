@@ -12,7 +12,7 @@ class RedaccionController extends Controller
     {
         $QuotationId=$id;
         $caminoalpoder=public_path();
-        $process = new Process(['python', 'redaccion.py',$QuotationId],$caminoalpoder);
+        $process = new Process(['python3', 'redaccion.py',$QuotationId],$caminoalpoder);
         $process->run();
         if (!$process->isSuccessful()) {
             throw new ProcessFailedException($process);
