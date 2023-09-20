@@ -28,12 +28,17 @@ cnx = mysql.connector.connect(user=DB_USERNAME,
                               use_pure=False)
 cotizacion=pd.read_sql("select * from quotations where id ="+str(sys.argv[1]),cnx)
 cliente=pd.read_sql("""select * from customers where customers.id="""+str(cotizacion['customer_id'].values[0]),cnx)
-
+user=pd.read_sql("""select * from users where users.id="""+str(cotizacion['user_id'].values[0]),cnx)
+productos=pd.read_sql("""select * from cart_products where cart_product.quotation_id="""+str(cotizacion['id'].values[0]),cnx)
 doc = DocxTemplate("plantilla.docx")
 
 context={
     'cliente':cliente['customer'].values[0],
-    'direccion':cliente['address']+' '+cliente['outdoor']+', '+cliente['city']+' '+cliente['suburb']+' '+cliente['state']+', cp: '+str(cliente['zip_code'])
+    'direccion':cliente['address'].values[0]+' '+cliente['outdoor'].values[0]+', '+cliente['city'].values[0]+' '+cliente['suburb'].values[0]+' '+cliente['state'].values[0]+', cp: '+str(cliente['zip_code'].values[0]),
+    'folio': cotizacion['invoice'].values[0],
+    'fecha':today,
+    'asesor':user['name'].values[0],
+
 } 
 print(context['direccion'])
 doc.render(context) 
