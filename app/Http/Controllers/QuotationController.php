@@ -783,4 +783,11 @@ class QuotationController extends Controller
 
         return $pdf->download('Rack_Engineering'.$Quotations->invoice.'_'.$Fecha.'.pdf');
     }   
+
+    public function close($id){
+        $Quotations = Quotation::find($id);
+        $Quotations->status='terminada';
+        $Quotations->save();
+        return redirect()->route('quotations')->with('update_reg', 'ok');
+    }
 }

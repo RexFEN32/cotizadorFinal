@@ -14,9 +14,14 @@ class CartController extends Controller
 {
    public function index(){
     $user_id=Auth::user()->id;
-    $Quotation = Quotation::where('user_id','=',$user_id)->orderBy('created_at', 'desc')->first();;
+    $Quotation = Quotation::where('user_id','=',$user_id)->where('status','iniciada')->orderBy('created_at', 'desc')->first();
+    if($Quotation->id){
+        $QuotationId=$Quotation->id;
+    }else{
+        $QuotationId=0;
+    }
     $Cart_products=Cart_product::where('user_id',$user_id)->get();
-    return view('quotes.cart.index',compact('Cart_products'));
+    return view('quotes.cart.index',compact('Cart_products','QuotationId'));
    }
    public function update(){
     $user_id=Auth::user()->id;

@@ -43,7 +43,7 @@
                                             </a>
                                         </div>
                                         <div class="col-6 text-center w-10">
-                                            <a href="{{route('redaccion', $row->id)}}" class="btn btn-green w-9 h-9">
+                                            <a href="{{route('redaccion', $row->id)}}" class="btn btn-green w-9 h-9" id="{{'quot'.$row->id}}">
                                                 <i class="fas fa-file"></i></span>
                                             </a>
                                         </div>
@@ -69,5 +69,14 @@
 @stop
 
 @section('js')
+
+@if (session('update_reg') == 'ok')
+<script type="text/javascript" src="{{ asset('vendor/mystylesjs/js/close_quotation.js') }}"></script>
+<script>
+    document.getElementById("{{'quot'.$QuotationId}}").focus();
+</script>
+@endif
 <script type="text/javascript" src="{{ asset('vendor/mystylesjs/js/tablequotations.js') }}"></script>
+
+
 @stop

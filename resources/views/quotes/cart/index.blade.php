@@ -60,6 +60,12 @@
             <a href="{{route('shopping_cart.vaciar')}}">
                 <button type="button" class="btn btn-danger btn-block">Vaciar Carrito</button>
             </a>
+            <br> <br>
+            @if($QuotationId != 0)
+            <a href="{{route('quotations.close',$QuotationId)}}">
+                <button type="button" class="btn btn-success btn-block">Cerrar Cotizacion</button>
+            </a>
+            @endif()
         </div>
     </div>
 @stop
