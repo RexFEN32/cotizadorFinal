@@ -29,7 +29,7 @@ cnx = mysql.connector.connect(user=DB_USERNAME,
 cotizacion=pd.read_sql("select * from quotations where id ="+str(sys.argv[1]),cnx)
 cliente=pd.read_sql("""select * from customers where customers.id="""+str(cotizacion['customer_id'].values[0]),cnx)
 user=pd.read_sql("""select * from users where users.id="""+str(cotizacion['user_id'].values[0]),cnx)
-productos=pd.read_sql("""select * from cart_products where cart_product.quotation_id="""+str(cotizacion['id'].values[0]),cnx)
+productos=pd.read_sql("""select * from cart_products where cart_products.quotation_id="""+str(cotizacion['id'].values[0]),cnx)
 doc = DocxTemplate("plantilla.docx")
 
 context={
