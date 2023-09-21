@@ -35,7 +35,7 @@
                         </svg>
                         <div class="card-body">
                             <div class="p-2 text-center">
-                                <a href="{{ route('quotations') }}" class="btn btn-sm btn-green">Consultar</a>
+                                <a href="{{ route('quotations',0) }}" class="btn btn-sm btn-green">Consultar</a>
                             </div>
                         </div>
                     </div>

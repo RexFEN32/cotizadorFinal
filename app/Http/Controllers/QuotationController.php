@@ -58,11 +58,16 @@ use Illuminate\Http\Request;
 
 class QuotationController extends Controller
 {
-    public function index()
+    public function index($id)
     {
         $Quotations = Quotation::all();
-        
-        return view('quotes.quotations', compact('Quotations'));
+        $QuotationId=$id;
+        if($QuotationId!=0){
+        $Quotations = Quotation::find($id);
+        $Quotations->status='terminada';
+        $Quotations->save();
+        }
+        return view('quotes.quotations', compact('Quotations','QuotationId'));
     }
 
     public function show($id)

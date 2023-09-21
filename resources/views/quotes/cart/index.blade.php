@@ -62,7 +62,7 @@
             </a>
             <br> <br>
             @if($QuotationId != 0)
-            <a href="{{route('quotations.close',$QuotationId)}}">
+            <a href="{{route('quotations',$QuotationId)}}">
                 <button type="button" class="btn btn-success btn-block">Cerrar Cotizacion</button>
             </a>
             @endif()

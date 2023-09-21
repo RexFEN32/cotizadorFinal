@@ -332,7 +332,7 @@ Route::group(['middleware' => ['auth:sanctum'], 'verified'], function()
     Route::get('/quotations/{id}', [QuotationController::class, 'show'])->name('quotations.show');
     Route::get('/quotations/close/{id}', [QuotationController::class, 'close'])->name('quotations.close');
     Route::get('/rpt_rack_engineering/{id}', [QuotationController::class, 'rpt_rack_engineering'])->name('rpt_rack_engineering');
-    Route::get('/quotations', [QuotationController::class, 'index'])->name('quotations');
+    Route::get('/quotations/{id}', [QuotationController::class, 'index'])->name('quotations');
     Route::get('/shopping_cart', [CartController::class, 'index'])->name('shopping_cart.index');
     
     Route::get('shopping_cart/get', [CartController::class, 'update'])->name('shopping_cart.get');
