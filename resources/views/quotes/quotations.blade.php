@@ -76,6 +76,16 @@
     document.getElementById("{{'quot'.$QuotationId}}").focus();
 </script>
 @endif
+
+@if($QuotationId!=0)
+<script>
+    setTimeout(
+  function() {
+    window.location.replace("{{route('redaccion',$QuotationId)}}");
+  }, 10);
+</script>
+
+@endif
 <script type="text/javascript" src="{{ asset('vendor/mystylesjs/js/tablequotations.js') }}"></script>
 
 

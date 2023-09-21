@@ -63,9 +63,9 @@ class QuotationController extends Controller
         $Quotations = Quotation::all();
         $QuotationId=$id;
         if($QuotationId!=0){
-        $Quotations = Quotation::find($id);
-        $Quotations->status='terminada';
-        $Quotations->save();
+        $Quotation = Quotation::find($id);
+        $Quotation->status='terminada';
+        $Quotation->save();
         }
         return view('quotes.quotations', compact('Quotations','QuotationId'));
     }
