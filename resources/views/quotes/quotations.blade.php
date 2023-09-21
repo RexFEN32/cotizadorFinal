@@ -70,12 +70,11 @@
 
 @section('js')
 
-@if (session('update_reg') == 'ok')
-<script type="text/javascript" src="{{ asset('vendor/mystylesjs/js/close_quotation.js') }}"></script>
-<script>
-    document.getElementById("{{'quot'.$QuotationId}}").focus();
-</script>
-@endif
+
+
+
+<script type="text/javascript" src="{{ asset('vendor/mystylesjs/js/tablequotations.js') }}"></script>
+
 
 @if($QuotationId!=0)
 <script>
@@ -83,10 +82,11 @@
   function() {
     window.location.replace("{{route('redaccion',$QuotationId)}}");
   }, 10);
+  
 </script>
-
+<script type="text/javascript" src="{{ asset('vendor/mystylesjs/js/close_quotation.js') }}"></script>
+<script>
+    document.getElementById("{{'quot'.$QuotationId}}").focus();
+</script>
 @endif
-<script type="text/javascript" src="{{ asset('vendor/mystylesjs/js/tablequotations.js') }}"></script>
-
-
 @stop

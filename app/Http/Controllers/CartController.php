@@ -25,8 +25,8 @@ class CartController extends Controller
    }
    public function update(){
     $user_id=Auth::user()->id;
-    $Quotation = Quotation::where('user_id','=',$user_id)->orderBy('created_at', 'desc')->first();;
-    $Cart_products=Cart_product::where('user_id',$user_id)->get();
+    $Quotation = Quotation::where('user_id','=',$user_id)->where('status','iniciada')->orderBy('created_at', 'desc')->first();
+    $Cart_products=Cart_product::where('quotation_id',$Quotation_Id)->get();
     
     return [
         'label'       => count($Cart_products),
