@@ -50,8 +50,11 @@
                                         
                                         <div class="col-6 text-center w-10">
                                             <a href="{{route('redaccion', $row->id)}}" class="btn btn-green w-9 h-9" id="{{'quot'.$row->id}}">
-                                                <i class="fas fa-file-word-o "></i></span>
+                                                <i class="fas fa-file-pdf-o "></i></span>
                                             </a>
+                                        </div>
+                                        <div class="col-6 text-center w-10">
+                                            <a href="{{route('rpt_rack_engineering', $row->id)}}" class="btn btn-green w-30"><i class="fa-solid fa-file-pdf"></i>&nbsp;Exportar</a>                
                                         </div>
                                         {{--  <div class="col-6 text-center w-10">
                                             <form class="DeleteReg" action=" " method="POST">
