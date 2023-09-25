@@ -467,6 +467,12 @@ return [
             'route'  => 'dashboard',
             // 'can' => 'COTIZADOR',
         ],
+        [
+            'text' => '  REPORTES',
+            'icon' => 'fas fa-file',
+            'route'  => 'dashboard',
+            // 'can' => 'COTIZADOR',
+        ],
     ],
 
     /*
