@@ -44,7 +44,13 @@
                                         </div>
                                         <div class="col-6 text-center w-10">
                                             <a href="{{route('redaccion', $row->id)}}" class="btn btn-green w-9 h-9" id="{{'quot'.$row->id}}">
-                                                <i class="fas fa-file"></i></span>
+                                                <i class="fas fa-file-word-o "></i></span>
+                                            </a>
+                                        </div>
+                                        
+                                        <div class="col-6 text-center w-10">
+                                            <a href="{{route('redaccion', $row->id)}}" class="btn btn-green w-9 h-9" id="{{'quot'.$row->id}}">
+                                                <i class="fas fa-file-word-o "></i></span>
                                             </a>
                                         </div>
                                         {{--  <div class="col-6 text-center w-10">
