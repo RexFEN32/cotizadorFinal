@@ -59,11 +59,14 @@ use App\Http\Controllers\TypeLRJoistController;
 use App\Http\Controllers\TypeStructuralJoistController;
 use App\Http\Controllers\WoodController;
 use App\Http\Controllers\CartController;
+
+use App\Http\Controllers\ReportsController;
 use App\Models\QuestionaryChart;
 use App\Models\Quotation;
 use App\Models\QuotationInstall;
 use App\Models\QuotationProtector;
 use App\Models\SinglePiece;
+
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -396,6 +399,8 @@ Route::group(['middleware' => ['auth:sanctum'], 'verified'], function()
     Route::get('shopping_cart/selectivo_quotation_travel_assignments/{id}', [FreightController::class, 'viaticos_add_carrito'])->name('selectivo_quotation_travel_assignments.add_carrito');
     Route::get('shopping_cart/selectivo_installs/{id}', [FreightController::class, 'selectivo_installs_add_carrito'])->name('selectivo_installs.add_carrito');
     Route::get('redaccion/{id}', [RedaccionController::class, 'generate'])->name('redaccion');
+    Route::get('reporte/{id}/{report}/{pdf}/{tipo?}', [ReportsController::class, 'generate'])->name('reports.generate');
+    Route::get('reporte/index', [ReportsController::class, 'index'])->name('reports.index');
     
 });
 

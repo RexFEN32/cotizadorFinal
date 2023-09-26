@@ -470,7 +470,7 @@ return [
         [
             'text' => '  REPORTES',
             'icon' => 'fas fa-file',
-            'route'  => 'dashboard',
+            'route'  => 'reports.index',
             // 'can' => 'COTIZADOR',
         ],
     ],
