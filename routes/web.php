@@ -27,7 +27,7 @@ use App\Http\Controllers\FreightController;
 use App\Http\Controllers\GrillController;
 use App\Http\Controllers\MenuFrameController;
 use App\Http\Controllers\MenuJoistController;
-use App\Http\Controllers\MiniatureFrameController;
+// use App\Http\Controllers\MiniatureFrameController;
 use App\Http\Controllers\PanelController;
 use App\Http\Controllers\QuestionaryChartController;
 use App\Http\Controllers\QuotationAdministrativeController;
@@ -110,8 +110,8 @@ Route::group(['middleware' => ['auth:sanctum'], 'verified'], function()
     Route::get('/selectivo_carga_pesada/{id}', [FramesController::class, 'show'])->name('frames.show');
     Route::post('/selectivo_carga_pesada', [FramesController::class, 'store'])->name('frames.store');
 
-    Route::get('/selectivo_minimarcos/{id}', [MiniatureFrameController::class, 'show'])->name('miniatureframe.show');
-    Route::post('/selectivo_minimarcos', [MiniatureFrameController::class, 'store'])->name('miniatureframe.store');
+    // Route::get('/selectivo_minimarcos/{id}', [MiniatureFrameController::class, 'show'])->name('miniatureframe.show');
+    // Route::post('/selectivo_minimarcos', [MiniatureFrameController::class, 'store'])->name('miniatureframe.store');
     
     Route::get('/selectivo_marcos_estructurales/{id}', [StructuralFrameworksController::class, 'show'])->name('structuralframeworks.show');
     Route::post('/selectivo_marcos_estructurales', [StructuralFrameworksController::class, 'store'])->name('structuralframeworks.store');
@@ -186,8 +186,8 @@ Route::group(['middleware' => ['auth:sanctum'], 'verified'], function()
     Route::get('/double_deep_carga_pesada/{id}', [DoubleDeepFramesController::class, 'show'])->name('double_deep_frames.show');
     Route::post('/double_deep_carga_pesada', [DoubleDeepFramesController::class, 'store'])->name('double_deep_frames.store');
 
-    Route::get('/double_deep_minimarcos/{id}', [DoubleDeepMiniatureFrameController::class, 'show'])->name('double_deep_miniatureframe.show');
-    Route::post('/double_deep_minimarcos', [DoubleDeepMiniatureFrameController::class, 'store'])->name('double_deep_miniatureframe.store');
+    // Route::get('/double_deep_minimarcos/{id}', [DoubleDeepMiniatureFrameController::class, 'show'])->name('double_deep_miniatureframe.show');
+    // Route::post('/double_deep_minimarcos', [DoubleDeepMiniatureFrameController::class, 'store'])->name('double_deep_miniatureframe.store');
     
     Route::get('/double_deep_marcos_estructurales/{id}', [DoubleDeepStructuralFrameworksController::class, 'show'])->name('double_deep_structuralframeworks.show');
     Route::post('/double_deep_marcos_estructurales', [DoubleDeepStructuralFrameworksController::class, 'store'])->name('double_deep_structuralframeworks.store');
