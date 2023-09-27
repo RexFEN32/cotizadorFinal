@@ -25,11 +25,12 @@ class CartController extends Controller
    }
    public function update(){
     $user_id=Auth::user()->id;
-    $Quotation = Quotation::where('user_id','=',$user_id)->where('status','iniciada')->orderBy('created_at', 'desc')->first();
+    $Quotation = Quotation::where('user_id','=',$user_id)->orderBy('created_at', 'desc')->first();
     $Cart_products=Cart_product::where('quotation_id',$Quotation_Id)->get();
-    
+    // count($Cart_products)
+     $R=$r;
     return [
-        'label'       => count($Cart_products),
+        'label'       => count($Cart_products)+3,
         'label_color' => 'danger',
         'icon' => 'fas fa-shopping-cart',
         
@@ -89,6 +90,7 @@ public function add_selectivo_carga_pesada($id){
     $Cart_product->type='SHLF';
     $Cart_product->unit_price=$SHLF->total_price;
     $Cart_product->total_price=$SHLF->total_price;
+    $Cart_product->sku=$SHLF->sku;
     $Cart_product->quotation_id=$Quotation_Id;
     $Cart_product->user_id=Auth::user()->id;
     $Cart_product->amount=1;

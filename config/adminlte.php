@@ -297,7 +297,7 @@ return [
             'id'           => 'my-notification',
             'icon' => 'fas fa-shopping-cart',
             'route'  => 'shopping_cart.index',
-            'can'  => 'VER ROL',
+            
             'icon_color' => 'primary',
             'topnav_right' => true,
             'label'        => 0,                      // The initial label for the badge (optional).
@@ -468,7 +468,7 @@ return [
             // 'can' => 'COTIZADOR',
         ],
         [
-            'text' => '  REPORTES',
+            'text' => 'REPORTES',
             'icon' => 'fas fa-file',
             'route'  => 'reports.index',
             // 'can' => 'COTIZADOR',
