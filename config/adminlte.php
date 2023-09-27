@@ -303,7 +303,7 @@ return [
             'label'        => 0,                      // The initial label for the badge (optional).
             'label_color'  => 'primary',
             'update_cfg'   => [
-                'url' => 'shopping_cart/get',
+                'url' => 'shopping_cart/getopkopko',
                 'period' => 3,
             ],
         ],

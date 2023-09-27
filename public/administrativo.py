@@ -29,7 +29,7 @@ query = ('SELECT * from customers where id =1')
 
 # join para cobros
 # cobros=pd.read_sql('Select cobros.* ,customers.customer,internal_orders.invoice, users.name from ((cobros inner join internal_orders on internal_orders.id = cobros.order_id) inner join customers on customers.id = internal_orders.customer_id )inner join users on cobros.capturo=users.id',cnx)
-
+product_tables=['selective_heavy_load_frames','quotation protectors']
 quotation=pd.read_sql("select * from quotations where id=" +str(id),cnx)
 products=pd.read_sql("select * from cart_products where quotation_id=" +str(id),cnx)
 #traer datos de los pedidos
