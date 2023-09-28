@@ -309,7 +309,6 @@ worksheet.write('L'+str(trow+8),0,blue_content)
 worksheet.write('M'+str(trow+8),0,blue_content)
 worksheet.write('N'+str(trow+8),0,blue_content)
 #TODO: calcular bien esto, to6al menos iva
-worksheet.merge_range('G'+str(trow+4)+':H'+str(trow+4),' ',blue_content_bold)
 
 worksheet.set_column('A:A',15)
 worksheet.set_column('F:F',17)

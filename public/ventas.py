@@ -251,7 +251,7 @@ for i in range(0,len(products)):
 
 
 
-trow=10+len(products)
+trow=11+len(products)
 
 
 
@@ -280,7 +280,6 @@ worksheet.write('E'+str(trow+6),0,blue_content)
 worksheet.write('D'+str(trow+7),0,blue_footer_format_bold)
 
 #TODO: calcular bien esto, total menos iva
-worksheet.merge_range('G'+str(trow+4)+':H'+str(trow+4),' ',blue_content_bold)
 
 worksheet.set_column('A:A',15)
 worksheet.set_column('F:F',17)
