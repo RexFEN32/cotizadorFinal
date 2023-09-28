@@ -27,12 +27,11 @@ class CartController extends Controller
     dd($Quotation,$Cart_products);
     return view('quotes.cart.index',compact('Cart_products','QuotationId'));
    }
-   public function update(){
+   public function actualizar(){
     $user_id=Auth::user()->id;
     $Quotation = Quotation::where('user_id','=',$user_id)->orderBy('created_at', 'desc')->first();
     $Cart_products=Cart_product::where('quotation_id',$Quotation_Id)->get();
-    // count($Cart_products)
-     $R=$r;
+    
     return [
         'label'       => count($Cart_products)+3,
         'label_color' => 'danger',

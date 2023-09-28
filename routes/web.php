@@ -338,7 +338,7 @@ Route::group(['middleware' => ['auth:sanctum'], 'verified'], function()
     Route::get('/quotations/{id}', [QuotationController::class, 'index'])->name('quotations');
     Route::get('/shopping_cart', [CartController::class, 'index'])->name('shopping_cart.index');
     
-    Route::get('shopping_cart/ge', [CartController::class, 'update'])->name('shopping_cart.get');
+    Route::get('shopping_cart/act', [CartController::class, 'actualizar'])->name('shopping_cart.act');
     Route::get('shopping_cart/delete/{id}', [CartController::class, 'destroy'])->name('shopping_cart.destroy');
     Route::get('shopping_cart/vaciar', [CartController::class, 'vaciar'])->name('shopping_cart.vaciar');
     

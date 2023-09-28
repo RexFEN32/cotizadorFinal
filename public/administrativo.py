@@ -212,6 +212,13 @@ import datetime
 currentDateTime = datetime.datetime.now()
 date = currentDateTime.date()
 year = date.strftime("%Y")
+
+
+#aki voy a trae r todos los datos
+
+pricelist_protectors=pd.read_sql('select * from price_list_protectors',cnx)
+quotation_protectors=pd.read_sql('select quotation_protectors.*, protectors.sku from quotation_protectors  inner join protectors on protectors.protector=quotation_protectors.protector where quotation_id ='+str(id),cnx)
+quotation_shlf=pd.read_sql('select * from selective_heavy_load_frames where quotation_id ='+str(id),cnx)
 df[0:1].to_excel(writer, sheet_name='Sheet1', startrow=7,startcol=6, header=False, index=False)
 worksheet = writer.sheets['Sheet1']
 #Encabezado del documento--------------
@@ -240,22 +247,64 @@ worksheet.merge_range('L6:L8', 'CTO X KG', blue_header_format)
 worksheet.merge_range('M6:M8', 'M2 UNIT	', blue_header_format)
 worksheet.merge_range('N6:N8', 'M2 TOT', blue_header_format)
 
+row_count=9
 
-for i in range(0,len(products)):
-    worksheet.write('C'+str(9+i), str(i), blue_content)
-    worksheet.write('D'+str(9+i), 'TC0000113997'+str(i), blue_content)
-    worksheet.write('E'+str(9+i), products['amount'].values[i], blue_content)
-    worksheet.write('F'+str(9+i), products['name'].values[i], blue_content)
+for i in range(0,len(quotation_protectors)):
+    n=4
+    row_count=row_count+n
+    
+    worksheet.write('C'+str(9+i*n), str(i*n+1), blue_content)
+    worksheet.write('D'+str(9+i*n), quotation_protectors['sku'].values[i], blue_content)
+    worksheet.write('E'+str(9+i*n), str(quotation_protectors['amount'].values[i]), blue_content)
+    worksheet.write('F'+str(9+i*n), quotation_protectors['protector'].values[i], blue_content)
+    worksheet.write('G'+str(9+i*n), quotation_protectors['cost'].values[i], blue_content)
+    worksheet.write('H'+str(9+i*n), quotation_protectors['amount'].values[i]*quotation_protectors['cost'].values[i], blue_content)
+    worksheet.write('I'+str(9+i*n), 'NA', blue_content)
+    worksheet.write('J'+str(9+i*n),str(quotation_protectors['total_weight'].values[i]/quotation_protectors['amount'].values[i])+'kg', blue_content)
+    worksheet.write('K'+str(9+i*n),str(quotation_protectors['total_weight'].values[i])+'kg', blue_content)
+    worksheet.write('L'+str(9+i*n),quotation_protectors['amount'].values[i]*quotation_protectors['cost'].values[i]/quotation_protectors['total_weight'].values[i], blue_content)
+    worksheet.write('M'+str(9+i*n),'NA', blue_content)
+    worksheet.write('N'+str(9+i*n),'NA', blue_content)
+    for j in range(0,len(pricelist_protectors)):
+        worksheet.write('C'+str(9+i*n+1+j), str(i*n+2+j), blue_content)
+        worksheet.write('D'+str(9+i*n+1+j), pricelist_protectors['sku'].values[j], blue_content)
+        worksheet.write('E'+str(9+i*n+1+j), str(pricelist_protectors['amount'].values[j]), blue_content)
+        worksheet.write('F'+str(9+i*n+1+j), pricelist_protectors['piece'].values[j], blue_content)
+        worksheet.write('G'+str(9+i*n+1+j), pricelist_protectors['cost'].values[j], blue_content)
+        worksheet.write('H'+str(9+i*n+1+j), pricelist_protectors['amount'].values[j]*pricelist_protectors['cost'].values[j], blue_content)
+        worksheet.write('I'+str(9+i*n+1+j),pricelist_protectors['caliber'].values[j], blue_content)
+        worksheet.write('J'+str(9+i*n+1+j),str(pricelist_protectors['kg_m2'].values[j])+'kg', blue_content)
+        worksheet.write('K'+str(9+i*n+1+j),str(pricelist_protectors['kg_m2'].values[j]*pricelist_protectors['amount'].values[j])+'kg', blue_content)
+        worksheet.write('L'+str(9+i*n+1+j), pricelist_protectors['cost'].values[j]/pricelist_protectors['kg_m2'].values[j], blue_content)
+        worksheet.write('M'+str(9+i*n+1+j), pricelist_protectors['kg_m2'].values[j], blue_content)
+        worksheet.write('N'+str(9+i*n+1+j), pricelist_protectors['amount'].values[j]*pricelist_protectors['kg_m2'].values[j], blue_content)
 
-    worksheet.write('G'+str(9+i), products['unit_price'].values[i], blue_content)
-    worksheet.write('H'+str(9+i), products['total_price'].values[i], blue_content)
-    worksheet.write('I'+str(9+i), '-'+str(i), blue_content)
-    worksheet.write('J'+str(9+i), '-'+str(i), blue_content)
+for i in range(0,len(quotation_shlf)):
+    n=4
+    
+    
+    worksheet.write('C'+str(row_count), str(row_count), blue_content)
+    worksheet.write('D'+str(row_count), quotation_shlf['sku'].values[i], blue_content)
+    worksheet.write('E'+str(row_count), str(quotation_shlf['amount'].values[i]), blue_content)
+    worksheet.write('F'+str(row_count), 'MARCO '+ quotation_shlf['model'].values[i]+' '+str(quotation_shlf['total_m2'].values[i])+'M', blue_content)
+    worksheet.write('G'+str(row_count), quotation_shlf['total_price'].values[i]/quotation_shlf['amount'].values[i]/3.19, blue_content)
+    worksheet.write('H'+str(row_count), quotation_shlf['total_price'].values[i]/3.19, blue_content)
+    worksheet.write('I'+str(row_count), quotation_shlf['caliber'], blue_content)
+    worksheet.write('J'+str(row_count),str(quotation_shlf['total_kg'].values[i]/quotation_shlf['amount'].values[i])+'kg', blue_content)
+    worksheet.write('K'+str(row_count),str(quotation_shlf['total_kg'].values[i])+'kg', blue_content)
+    worksheet.write('L'+str(row_count),quotation_shlf['total_price'].values[i]/quotation_shlf['total_kg'].values[i], blue_content)
+    worksheet.write('M'+str(row_count),quotation_shlf['total_m2'].values[i]/quotation_shlf['amount'].values[i], blue_content)
+    worksheet.write('N'+str(row_count),quotation_shlf['total_m2'].values[i], blue_content)
+    #aki ban las piezas
+    worksheet.write('C'+str(row_count+1), str(row_count), blue_content)
+    worksheet.write('D'+str(row_count+1), 'TC046363', blue_content)
+    worksheet.write('E'+str(row_count+1), str(quotation_shlf['total_crossbars'].values[i]), blue_content)
+    worksheet.write('F'+str(row_count+1), 'TORNILLLO GALV DE 5/16 * POR 3/4" DE LARGO GRADO 5', blue_content)
+    
 
+    row_count=row_count+n
 
-
-
-trow=10+len(products)
+trow=row_count
 
 
 
@@ -263,7 +312,11 @@ trow=10+len(products)
 
 #TOTALES
 worksheet.merge_range('C'+str(trow+1)+':E'+str(trow), 'TOTAL (EQV M.N)', blue_header_format_bold)
-worksheet.merge_range('I'+str(trow+1)+':J'+str(trow),40 ,blue_footer_format_bold)
+
+worksheet.write_formula('H'+str(trow),'{=SUM(H9:H'+str(trow-1)+')}',blue_footer_format_bold)
+worksheet.write_formula('K'+str(trow),'{=SUM(K9:K'+str(trow-1)+')}',blue_footer_format_bold)
+worksheet.write_formula('N'+str(trow),'{=SUM(N9:N'+str(trow-1)+')}',blue_footer_format_bold)
+
 
 
 
@@ -272,15 +325,16 @@ worksheet.merge_range('I'+str(trow+1)+':J'+str(trow),40 ,blue_footer_format_bold
 
 
 #RESUMEN
-worksheet.merge_range('D'+str(trow+3)+':E'+str(trow+3),'RESUMEN DE KILOS',blue_header_format_bold)
+worksheet.merge_range('D'+str(trow+3)+':E'+str(trow+4),'RESUMEN DE KILOS',blue_header_format_bold)
 #subtabla 1, kilos
-worksheet.write('D'+str(trow+4),'KILOS',blue_header_format)
+worksheet.write('D'+str(trow+5),'KILOS',blue_header_format)
+worksheet.write('E'+str(trow+5),'CALIBRE',blue_header_format)
 
-worksheet.write('D'+str(trow+5),0,blue_content)
-worksheet.write('E'+str(trow+5),0,blue_content)
 worksheet.write('D'+str(trow+6),0,blue_content)
 worksheet.write('E'+str(trow+6),0,blue_content)
-worksheet.write('D'+str(trow+7),0,blue_footer_format_bold)
+worksheet.write('D'+str(trow+7),0,blue_content)
+worksheet.write('E'+str(trow+7),0,blue_content)
+worksheet.write('D'+str(trow+8),0,blue_footer_format_bold)
 #subtabla2 costos
 worksheet.merge_range('H'+str(trow+4)+':K'+str(trow+4),'RESUMEN DE COSTOS',blue_header_format_bold)
 worksheet.write('L'+str(trow+4),'POSICION',blue_header_format)
@@ -311,7 +365,9 @@ worksheet.write('N'+str(trow+8),0,blue_content)
 #TODO: calcular bien esto, to6al menos iva
 
 worksheet.set_column('A:A',15)
-worksheet.set_column('F:F',17)
+
+worksheet.set_column('D:D',20)
+worksheet.set_column('F:F',25)
 worksheet.set_column('L:L',15)
 worksheet.set_column('G:G',15)
 worksheet.set_column('H:H',15)
