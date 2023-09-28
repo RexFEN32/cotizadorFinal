@@ -273,17 +273,42 @@ worksheet.merge_range('I'+str(trow+1)+':J'+str(trow),40 ,blue_footer_format_bold
 
 #RESUMEN
 worksheet.merge_range('D'+str(trow+3)+':E'+str(trow+3),'RESUMEN DE KILOS',blue_header_format_bold)
-
+#subtabla 1, kilos
 worksheet.write('D'+str(trow+4),'KILOS',blue_header_format)
 
 worksheet.write('D'+str(trow+5),0,blue_content)
 worksheet.write('E'+str(trow+5),0,blue_content)
 worksheet.write('D'+str(trow+6),0,blue_content)
 worksheet.write('E'+str(trow+6),0,blue_content)
-
 worksheet.write('D'+str(trow+7),0,blue_footer_format_bold)
+#subtabla2 costos
+worksheet.merge_range('H'+str(trow+4)+':K'+str(trow+4),'RESUMEN DE COSTOS',blue_header_format_bold)
+worksheet.write('L'+str(trow+4),'POSICION',blue_header_format)
+worksheet.write('M'+str(trow+4),'KILOS',blue_header_format)
+worksheet.write('N'+str(trow+4),'PORCENTAJE',blue_header_format)
 
-#TODO: calcular bien esto, total menos iva
+worksheet.merge_range('H'+str(trow+5)+':K'+str(trow+5),'CONTRATO UNITARIO SOLO MATERIALES',blue_header_format)
+worksheet.merge_range('H'+str(trow+6)+':K'+str(trow+6),'CONTRATO UNITARIO SOLO ARMADO',blue_header_format)
+worksheet.merge_range('H'+str(trow+7)+':K'+str(trow+7),'CONTRATO UNITARIO SOLO TRASLADO',blue_header_format)
+worksheet.merge_range('H'+str(trow+8)+':K'+str(trow+8),'CONTRATO UNITARIO COMBINADO',blue_header_format)
+
+
+worksheet.write('L'+str(trow+5),0,blue_content)
+worksheet.write('M'+str(trow+5),0,blue_content)
+worksheet.write('N'+str(trow+5),0,blue_content)
+
+worksheet.write('L'+str(trow+6),0,blue_content)
+worksheet.write('M'+str(trow+6),0,blue_content)
+worksheet.write('N'+str(trow+6),0,blue_content)
+
+worksheet.write('L'+str(trow+7),0,blue_content)
+worksheet.write('M'+str(trow+7),0,blue_content)
+worksheet.write('N'+str(trow+7),0,blue_content)
+
+worksheet.write('L'+str(trow+8),0,blue_content)
+worksheet.write('M'+str(trow+8),0,blue_content)
+worksheet.write('N'+str(trow+8),0,blue_content)
+#TODO: calcular bien esto, to6al menos iva
 worksheet.merge_range('G'+str(trow+4)+':H'+str(trow+4),' ',blue_content_bold)
 
 worksheet.set_column('A:A',15)
