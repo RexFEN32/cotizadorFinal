@@ -255,7 +255,7 @@ for i in range(0,len(products)):
 
 
 
-trow=10+i
+trow=10+len(products)
 
 
 
