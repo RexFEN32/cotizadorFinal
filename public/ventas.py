@@ -40,7 +40,7 @@ products=pd.read_sql("select * from cart_products where quotation_id=" +str(id),
 #     inner join customers on customers.id = internal_orders.customer_id )
 #     inner join coins on internal_orders.coin_id = coins.id)
 #      """,cnx)
-writer = pd.ExcelWriter('storage/report/administrativo'+str(id)+'.xlsx', engine='xlsxwriter')
+writer = pd.ExcelWriter('storage/report/ventas'+str(id)+'.xlsx', engine='xlsxwriter')
 
 workbook = writer.book
 ##FORMATOS PARA EL TITULO------------------------------------------------------------------------------
