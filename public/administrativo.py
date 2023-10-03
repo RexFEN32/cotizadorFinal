@@ -225,7 +225,6 @@ worksheet = writer.sheets['Sheet1']
 worksheet.merge_range('B2:F2', 'REPORTE POR COTIZACION ', negro_b)
 worksheet.merge_range('B3:F3', 'ADMINISTRATIVO', negro_s)
 worksheet.merge_range('B4:F4', 'COSTOS ', negro_b)
-
 worksheet.write('H2', 'AÑO', negro_b)
 
 worksheet.write('I2', year, negro_b)
@@ -312,7 +311,6 @@ trow=row_count
 
 #TOTALES
 worksheet.merge_range('C'+str(trow+1)+':E'+str(trow), 'TOTAL (EQV M.N)', blue_header_format_bold)
-
 worksheet.write_formula('H'+str(trow),'{=SUM(H9:H'+str(trow-1)+')}',blue_footer_format_bold)
 worksheet.write_formula('K'+str(trow),'{=SUM(K9:K'+str(trow-1)+')}',blue_footer_format_bold)
 worksheet.write_formula('N'+str(trow),'{=SUM(N9:N'+str(trow-1)+')}',blue_footer_format_bold)
