@@ -25,13 +25,9 @@ cnx = mysql.connector.connect(user=DB_USERNAME,
                               database=DB_DATABASE,
                               use_pure=False)
 #Seccion para traer informacion de la base
-query = ('SELECT * from customers where id =1')
-
 # join para cobros
 # cobros=pd.read_sql('Select cobros.* ,customers.customer,internal_orders.invoice, users.name from ((cobros inner join internal_orders on internal_orders.id = cobros.order_id) inner join customers on customers.id = internal_orders.customer_id )inner join users on cobros.capturo=users.id',cnx)
-product_tables=['selective_heavy_load_frames','quotation protectors']
 quotation=pd.read_sql("select * from quotations where id=" +str(id),cnx)
-products=pd.read_sql("select * from cart_products where quotation_id=" +str(id),cnx)
 #traer datos de los pedidos
 # pedidos=pd.read_sql("""Select internal_orders.* ,customers.clave,customers.alias,
 # coins.exchange_sell, coins.coin, coins.symbol,coins.code
@@ -215,66 +211,82 @@ year = date.strftime("%Y")
 
 
 #aki voy a trae r todos los datos
-tablas=['double_deep_crossbars', 
-'double_deep_floors', 
-'double_deep_floor_reinforcements', 
-'double_deep_heavy_load_frames', 
-'double_deep_joist_box25s', 
-'double_deep_joist_box25_caliber14s', 
-'double_deep_joist_box2s', 
-'double_deep_joist_box2_caliber14s', 
-'double_deep_joist_c2_s', 
-'double_deep_joist_chairs', 
-'double_deep_joist_l25_caliber14s', 
-'double_deep_joist_l25_s', 
-'double_deep_joist_l2_caliber14s', 
-'double_deep_joist_l2_s', 
-'double_deep_joist_lrs', 
-'double_deep_joist_structurals', 
-'double_deep_miniature_frames', 
-'double_deep_spacers', 
-'double_deep_structural_frames', 
-'freights', 
-'grills', 
-'installations', 
-'packagings', 
-'quot25_j_galvanized_panels', 
-'quot25_j_painted_panels', 
-'quot2_j_galvanized_panels', 
-'quot2_j_painted_panels', 
-'quotation_administratives', 
-'quotation_installs', 
-'quotation_protectors', 
-'quotation_specials', 
-'quotation_travel_assignments', 
-'quotation_uninstalls', 
-'quot_chair_j_galvanized_panels', 
-'quot_chair_j_painted_panels', 
-'selective_crossbars', 
-'selective_floors', 
-'selective_floor_reinforcements', 
-'selective_heavy_load_frames', 
-'selective_joist_box25s', 
-'selective_joist_box25_caliber14s', 
-'selective_joist_box2s', 
-'selective_joist_box2_caliber14s', 
-'selective_joist_c2_s', 
-'selective_joist_chairs', 
-'selective_joist_l25_caliber14s', 
-'selective_joist_l25_s', 
-'selective_joist_l2_caliber14s', 
-'selective_joist_l2_s', 
-'selective_joist_lrs', 
-'selective_joist_structurals', 
-'selective_miniature_frames', 
-'selective_spacers', 
-'selective_structural_frames', 
-'uninstalls', 
-'wood', ]
+tablas={'double_deep_crossbars' : 'double deep crossbars',
+'double_deep_floors' : 'double deep floors',
+'double_deep_floor_reinforcements' : 'double deep floor reinforcements',
+'double_deep_heavy_load_frames' : 'double deep heavy load frames',
+'double_deep_joist_box25s' : 'double deep joist box25s',
+'double_deep_joist_box25_caliber14s' : 'double deep joist box25 caliber14s',
+'double_deep_joist_box2s' : 'double deep joist box2s',
+'double_deep_joist_box2_caliber14s' : 'double deep joist box2 caliber14s',
+'double_deep_joist_c2_s' : 'double deep joist c2 s',
+'double_deep_joist_chairs' : 'double deep joist chairs',
+'double_deep_joist_l25_caliber14s' : 'double deep joist l25 caliber14s',
+'double_deep_joist_l25_s' : 'double deep joist l25 s',
+'double_deep_joist_l2_caliber14s' : 'double deep joist l2 caliber14s',
+'double_deep_joist_l2_s' : 'double deep joist l2 s',
+'double_deep_joist_lrs' : 'double deep joist lrs',
+'double_deep_joist_structurals' : 'double deep joist structurals',
+'double_deep_miniature_frames' : 'double deep miniature frames',
+'double_deep_spacers' : 'double deep spacers',
+'double_deep_structural_frames' : 'double deep structural frames',
+'freights' : 'freights',
+'grills' : 'grills',
+'installations' : 'installations',
+'packagings' : 'packagings',
+'quot25_j_galvanized_panels' : 'quot25 j galvanized panels',
+'quot25_j_painted_panels' : 'quot25 j painted panels',
+'quot2_j_galvanized_panels' : 'quot2 j galvanized panels',
+'quot2_j_painted_panels' : 'quot2 j painted panels',
+'quotation_administratives' : 'quotation administratives',
+'quotation_installs' : 'quotation installs',
+'quotation_protectors' : '',
+'quotation_specials' : 'quotation specials',
+'quotation_travel_assignments' : 'quotation travel assignments',
+'quotation_uninstalls' : 'quotation uninstalls',
+'quot_chair_j_galvanized_panels' : 'quot chair j galvanized panels',
+'quot_chair_j_painted_panels' : 'quot chair j painted panels',
+'selective_crossbars' : 'selective crossbars',
+'selective_floors' : 'selective floors',
+'selective_floor_reinforcements' : 'selective floor reinforcements',
+'selective_heavy_load_frames' : 'MARCO SELECTIVO',
+'selective_joist_box25s' : 'selective joist box25s',
+'selective_joist_box25_caliber14s' : 'selective joist box25 caliber14s',
+'selective_joist_box2s' : 'selective joist box2s',
+'selective_joist_box2_caliber14s' : 'selective joist box2 caliber14s',
+'selective_joist_c2_s' : 'selective joist c2 s',
+'selective_joist_chairs' : 'selective joist chairs',
+'selective_joist_l25_caliber14s' : 'selective joist l25 caliber14s',
+'selective_joist_l25_s' : 'selective joist l25 s',
+'selective_joist_l2_caliber14s' : 'selective joist l2 caliber14s',
+'selective_joist_l2_s' : 'selective joist l2 s',
+'selective_joist_lrs' : 'selective joist lrs',
+'selective_joist_structurals' : 'selective joist structurals',
+'selective_miniature_frames' : 'selective miniature frames',
+'selective_spacers' : 'selective spacers',
+'selective_structural_frames' : 'selective structural frames',
+'uninstalls' : 'uninstalls',
+'wood' : 'wood',}
+aceros=pd.read_sql('select * from steels ',cnx)
+ 
+products=pd.DataFrame()
+
+for i in tablas:
+    p=pd.read_sql('select * from '+i+' where quotation_id = '+str(id),cnx)
+    p=p.assign(tabla=i)
+    if(('cost' not in p.columns)&(len(p)>0)):
+        costo=aceros.loc[aceros['caliber']==p['caliber'].values[0],'cost'].values[0]
+        p=p.assign(cost=costo*p.total_kg)
+        print(i)
+        print(costo)
+    products=products.append(p)
+products=products.fillna('')
 pricelist_protectors=pd.read_sql('select * from price_list_protectors',cnx)
 quotation_protectors=pd.read_sql('select quotation_protectors.*, protectors.sku from quotation_protectors  inner join protectors on protectors.protector=quotation_protectors.protector where quotation_id ='+str(id),cnx)
 quotation_shlf=pd.read_sql('select * from selective_heavy_load_frames where quotation_id ='+str(id),cnx)
 df[0:1].to_excel(writer, sheet_name='Sheet1', startrow=7,startcol=6, header=False, index=False)
+pricelist_screw=pd.read_sql('select * from price_list_screws inner join materials on materials.price_list_screw_id= price_list_screws.id',cnx)
+
 worksheet = writer.sheets['Sheet1']
 #Encabezado del documento--------------
 worksheet.merge_range('B2:F2', 'REPORTE POR COTIZACION ', negro_b)
@@ -302,66 +314,57 @@ worksheet.merge_range('M6:M8', 'M2 UNIT	', blue_header_format)
 worksheet.merge_range('N6:N8', 'M2 TOT', blue_header_format)
 
 row_count=9
+def ret_na(value):
+    if(len(value)>0):
+        return value
+    else:
+        return 'NA'
+def num(value):
+    if(len(str(value))>0):
+        return value
+    else:
+        return 0
 
-for i in range(0,len(quotation_protectors)):
-    n=4
-    row_count=row_count+n
-    
-    worksheet.write('C'+str(9+i*n), str(i*n+1), blue_content)
-    worksheet.write('D'+str(9+i*n), quotation_protectors['sku'].values[i], blue_content)
-    worksheet.write('E'+str(9+i*n), str(quotation_protectors['amount'].values[i]), blue_content)
-    worksheet.write('F'+str(9+i*n), quotation_protectors['protector'].values[i], blue_content)
-    worksheet.write('G'+str(9+i*n), quotation_protectors['cost'].values[i], blue_content)
-    worksheet.write('H'+str(9+i*n), quotation_protectors['amount'].values[i]*quotation_protectors['cost'].values[i], blue_content)
-    worksheet.write('I'+str(9+i*n), 'NA', blue_content)
-    worksheet.write('J'+str(9+i*n),str(quotation_protectors['total_weight'].values[i]/quotation_protectors['amount'].values[i])+'kg', blue_content)
-    worksheet.write('K'+str(9+i*n),str(quotation_protectors['total_weight'].values[i])+'kg', blue_content)
-    worksheet.write('L'+str(9+i*n),quotation_protectors['amount'].values[i]*quotation_protectors['cost'].values[i]/quotation_protectors['total_weight'].values[i], blue_content)
-    worksheet.write('M'+str(9+i*n),'NA', blue_content)
-    worksheet.write('N'+str(9+i*n),'NA', blue_content)
-    for j in range(0,len(pricelist_protectors)):
-        worksheet.write('C'+str(9+i*n+1+j), str(i*n+2+j), blue_content)
-        worksheet.write('D'+str(9+i*n+1+j), pricelist_protectors['sku'].values[j], blue_content)
-        worksheet.write('E'+str(9+i*n+1+j), str(pricelist_protectors['amount'].values[j]), blue_content)
-        worksheet.write('F'+str(9+i*n+1+j), pricelist_protectors['piece'].values[j], blue_content)
-        worksheet.write('G'+str(9+i*n+1+j), pricelist_protectors['cost'].values[j], blue_content)
-        worksheet.write('H'+str(9+i*n+1+j), pricelist_protectors['amount'].values[j]*pricelist_protectors['cost'].values[j], blue_content)
-        worksheet.write('I'+str(9+i*n+1+j),pricelist_protectors['caliber'].values[j], blue_content)
-        worksheet.write('J'+str(9+i*n+1+j),str(pricelist_protectors['kg_m2'].values[j])+'kg', blue_content)
-        worksheet.write('K'+str(9+i*n+1+j),str(pricelist_protectors['kg_m2'].values[j]*pricelist_protectors['amount'].values[j])+'kg', blue_content)
-        worksheet.write('L'+str(9+i*n+1+j), pricelist_protectors['cost'].values[j]/pricelist_protectors['kg_m2'].values[j], blue_content)
-        worksheet.write('M'+str(9+i*n+1+j), pricelist_protectors['kg_m2'].values[j], blue_content)
-        worksheet.write('N'+str(9+i*n+1+j), pricelist_protectors['amount'].values[j]*pricelist_protectors['kg_m2'].values[j], blue_content)
+for i in range(0,len(products)):
+    piezas=pricelist_screw.loc[pricelist_screw['product'].str.contains(products['tabla'].values[i])]
 
-for i in range(0,len(quotation_shlf)):
-    n=4
-    
-    
-    worksheet.write('C'+str(row_count), str(row_count), blue_content)
-    worksheet.write('D'+str(row_count), quotation_shlf['sku'].values[i], blue_content)
-    worksheet.write('E'+str(row_count), str(quotation_shlf['amount'].values[i]), blue_content)
-    worksheet.write('F'+str(row_count), 'MARCO '+ quotation_shlf['model'].values[i]+' '+str(quotation_shlf['total_m2'].values[i])+'M', blue_content)
-    worksheet.write('G'+str(row_count), quotation_shlf['total_price'].values[i]/quotation_shlf['amount'].values[i]/3.19, blue_content)
-    worksheet.write('H'+str(row_count), quotation_shlf['total_price'].values[i]/3.19, blue_content)
-    worksheet.write('I'+str(row_count), quotation_shlf['caliber'], blue_content)
-    worksheet.write('J'+str(row_count),str(quotation_shlf['total_kg'].values[i]/quotation_shlf['amount'].values[i])+'kg', blue_content)
-    worksheet.write('K'+str(row_count),str(quotation_shlf['total_kg'].values[i])+'kg', blue_content)
-    worksheet.write('L'+str(row_count),quotation_shlf['total_price'].values[i]/quotation_shlf['total_kg'].values[i], blue_content)
-    worksheet.write('M'+str(row_count),quotation_shlf['total_m2'].values[i]/quotation_shlf['amount'].values[i], blue_content)
-    worksheet.write('N'+str(row_count),quotation_shlf['total_m2'].values[i], blue_content)
-    #aki ban las piezas
-    worksheet.write('C'+str(row_count+1), str(row_count), blue_content)
-    worksheet.write('D'+str(row_count+1), 'TC046363', blue_content)
-    worksheet.write('E'+str(row_count+1), str(quotation_shlf['total_crossbars'].values[i]), blue_content)
-    worksheet.write('F'+str(row_count+1), 'TORNILLLO GALV DE 5/16 * POR 3/4" DE LARGO GRADO 5', blue_content)
-    
+    n=len(piezas)
+    print(n,products['tabla'].values[i],row_count)
+    #pda
+    worksheet.write('C'+str(row_count), str(i*n+1), blue_content)
+    #sku
+    worksheet.write('D'+str(row_count), products['sku'].values[i], blue_content)
+    worksheet.write('E'+str(row_count), str(products['amount'].values[i]), blue_content)
+    #descripcion
+    worksheet.write('F'+str(row_count), tablas[products['tabla'].values[i]]+products['protector'].values[i]+' '+products['model'].values[i], blue_content)
+    #costos
+    worksheet.write('G'+str(row_count), products['cost'].values[i], blue_content)
+    worksheet.write('H'+str(row_count), products['amount'].values[i]*products['cost'].values[i], blue_content)
+    #calibre
+    worksheet.write('I'+str(row_count), ret_na(products['caliber'].values[i]), blue_content)
+    #pesos
+    worksheet.write('J'+str(row_count),str((num(products['total_weight'].values[i])+num(products['total_kg'].values[i]))/products['amount'].values[i])+'kg', blue_content)
+    worksheet.write('K'+str(row_count),str((num(products['total_weight'].values[i])+num(products['total_kg'].values[i])))+'kg', blue_content)
+    worksheet.write('L'+str(row_count),products['amount'].values[i]*products['cost'].values[i]/(num(products['total_weight'].values[i])+num(products['total_kg'].values[i])), blue_content)
 
-    row_count=row_count+n
-
+    worksheet.write('M'+str(row_count),'NA', blue_content)
+    worksheet.write('N'+str(row_count),'NA', blue_content)
+    row_count=row_count+1
+    for j in range(0,n):
+        worksheet.write('C'+str(row_count), str(i*n+2+j), blue_content)
+        worksheet.write('D'+str(row_count), 'TC..', blue_content)
+        worksheet.write('E'+str(row_count), str(piezas['amount'].values[j]), blue_content)
+        worksheet.write('F'+str(row_count), piezas['description'].values[j], blue_content)
+        worksheet.write('G'+str(row_count), piezas['cost'].values[j], blue_content)
+        worksheet.write('H'+str(row_count), piezas['amount'].values[j]*piezas['cost'].values[j], blue_content)
+        worksheet.write('I'+str(row_count), piezas['type'].values[j], blue_content)
+        worksheet.write('J'+str(row_count),str(0.0), blue_content)
+        worksheet.write('K'+str(row_count),str(0.0), blue_content)
+        worksheet.write('L'+str(row_count), str(0.0), blue_content)
+        worksheet.write('M'+str(row_count), str(0.0), blue_content)
+        worksheet.write('N'+str(row_count), str(0.0), blue_content)
+        row_count=row_count+1
 trow=row_count
-
-
-
 
 
 #TOTALES
